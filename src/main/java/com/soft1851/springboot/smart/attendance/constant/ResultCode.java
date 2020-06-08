@@ -2,7 +2,7 @@ package com.soft1851.springboot.smart.attendance.constant;
 
 /**
  * @Description TODO
- * @Author zhyan
+ * @author smart-attendance
  * @Date 2020/4/21
  * @Version 1.0
  */
