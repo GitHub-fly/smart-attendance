@@ -76,7 +76,7 @@ public class SysMenu {
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @NotNull(message = "isDeleted不能为空")
-    @Column(name = "is_deleted", length = 4, nullable = false)
-    private Integer isDeleted;
+    @NotNull(message = "deleteFlag不能为空")
+    @Column(name = "delete_flag", length = 4, nullable = false)
+    private Integer deleteFlag;
 }
