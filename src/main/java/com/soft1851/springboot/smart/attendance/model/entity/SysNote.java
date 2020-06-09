@@ -40,6 +40,12 @@ public class SysNote {
     private String userId;
 
     /**
+     * 预留手机号
+     */
+    @Column(name = "user_phone", length = 30, nullable = false)
+    private String userPhone;
+
+    /**
      * 请假类型
      * 1 -> 事假
      * 2 -> 病假

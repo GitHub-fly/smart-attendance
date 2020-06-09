@@ -56,42 +56,55 @@ public class SysUser {
     /**
      * 阿姨所管楼层
      */
-    @NotNull
     @Column(name = "sys_room", length = 60)
     private String sysRoom;
 
     /**
      * 学生所属房间
      */
-    @NotNull
     @Column(name = "room_number", length = 60)
     private String roomNumber;
 
     /**
+     * 学生的床位号
+     */
+    @Column(name = "room_bed_number", length = 11)
+    private Integer roomBedNumber;
+
+    /**
      * 班主任名称
      */
-    @NotNull
     @Column(name = "sys_user_teacher_name", length = 60)
     private String sysUserTeacherName;
 
     /**
+     * 学生的辅导员姓名
+     */
+    @Column(name = "sys_user_instructor_name", length = 60)
+    private String sysUserInstructorName;
+
+    /**
+     * 学生的二级学院老师名
+     */
+    @Column(name = "sys_user_academy_teacher_name", length = 60)
+    private String sysUserAcademyTeacherName;
+
+
+    /**
      * 学生所属班级或班主任管理班级
      */
-    @NotNull
     @Column(name = "sys_class_name", length = 60)
     private String sysClassName;
 
     /**
      * 学生所属院系
      */
-    @NotNull
     @Column(name = "sys_user_academy", length = 60)
     private String sysUserAcademy;
 
     /**
      * 学生今日打卡
      */
-    @NotNull
     @Column(name = "is_attendance", length = 0)
     private Integer isAttendance;
 

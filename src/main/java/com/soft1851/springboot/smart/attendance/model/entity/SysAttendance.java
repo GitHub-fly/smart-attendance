@@ -30,16 +30,29 @@ public class SysAttendance {
     @NotNull(message = "pkId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_menu_id",length = 0, nullable = false)
+    @Column(name = "pk_id",length = 0, nullable = false)
     private Long pkId;
 
+    /**
+     * user_id
+     */
     @NotNull(message = "userId不能为空")
     @Column(name = "user_id", length = 254, nullable = false)
     private String userId;
 
+    /**
+     * 经度
+     */
     @NotNull(message = "longitude")
     @Column(name = "longitude", length = 254, nullable = false)
     private String longitude;
+
+    /**
+     * 纬度
+     */
+    @NotNull(message = "longitude")
+    @Column(name = "latitude", length = 254, nullable = false)
+    private String latitude;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
