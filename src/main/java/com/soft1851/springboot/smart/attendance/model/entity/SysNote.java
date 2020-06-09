@@ -27,7 +27,7 @@ public class SysNote {
     /**
      * 主键
      */
-    @NotNull(message = "pkNoteId不能为空")
+//    @NotNull(message = "pkNoteId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
@@ -88,48 +88,48 @@ public class SysNote {
     /**
      * 班主任意见  同意或者不同意
      */
-    @Column(name = "teacher_opinion", length = 255, nullable = false)
+    @Column(name = "teacher_opinion", length = 255)
     private String teacherOpinion;
 
     /**
      * 辅导员意见  同意或者不同意
      */
-    @Column(name = "instructor_opinion", length = 255, nullable = false)
+    @Column(name = "instructor_opinion", length = 255)
     private String instructorOpinion;
 
     /**
      * 二级学院意见
      * 同意或者不同意
      */
-    @Column(name = "academy_opinion", length = 255, nullable = false)
+    @Column(name = "academy_opinion", length = 255)
     private String academyOpinion;
 
     /**
      * 假条状态  0 -> 驳回  1 -> 未审核  2 -> 同意
      */
-    @Column(name = "status", length = 2, nullable = false)
+    @Column(name = "status", length = 2)
     private Integer status;
 
     /**
      * 创建时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtCreate不能为空")
-    @Column(name = "gmt_create", nullable = false)
+//    @NotNull(message = "gmtCreate不能为空")
+    @Column(name = "gmt_create")
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtModified不能为空")
-    @Column(name = "gmt_modified", nullable = false)
+
+    @Column(name = "gmt_modified")
     private Timestamp gmtModified;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @NotNull(message = "deleteFlag不能为空")
-    @Column(name = "is_deleted", length = 4, nullable = false)
+//    @NotNull(message = "deleteFlag不能为空")
+    @Column(name = "is_deleted", length = 4)
     private Integer deleteFlag;
 }

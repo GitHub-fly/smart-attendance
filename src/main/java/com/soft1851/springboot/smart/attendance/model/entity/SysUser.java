@@ -2,9 +2,7 @@ package com.soft1851.springboot.smart.attendance.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -17,6 +15,7 @@ import java.util.Date;
  **/
 @Entity
 @Data
+@Table(name = "sys_user", indexes = {@Index(name= "sys_job_numberIndex", columnList = "sys_job_number")})
 public class SysUser {
     /**
      * 用户id
@@ -128,7 +127,7 @@ public class SysUser {
      * 加盐
      */
     @NotNull
-    @Column(name = "salt", length = 4)
+    @Column(name = "salt", length = 60)
     private String salt;
 
     /**
