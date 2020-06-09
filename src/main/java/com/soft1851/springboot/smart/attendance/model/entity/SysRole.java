@@ -44,20 +44,20 @@ public class SysRole {
     /**
      * 角色描述
      */
-    @Column(name = "role_decoration", length = 254, nullable = false)
+    @Column(name = "role_decoration", length = 254)
     private String roleDecoration;
 
     /**
      * 排序字段
      */
-    @Column(name = "sort", length = 4, nullable = false)
+    @Column(name = "sort", length = 4)
     private Integer sort;
 
     /**
      * 创建时间
      */
     @JsonIgnore
-    @Column(name = "gmt_create", nullable = false)
+    @Column(name = "gmt_create")
     private Timestamp gmtCreate;
 
     /**
@@ -65,13 +65,13 @@ public class SysRole {
      */
     @JsonIgnore
     @LastModifiedDate
-    @Column(name = "mgt_modified", nullable = false)
+    @Column(name = "gmt_modified")
     private Timestamp gmtModified;
 
     /**
      * 是否删除（0 逻辑删除， 1 未删除）
      */
-    @Column(name = "delete_flag", length = 4, nullable = false)
+    @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag;
 
 }

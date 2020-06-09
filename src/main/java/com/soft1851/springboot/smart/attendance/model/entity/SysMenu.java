@@ -42,19 +42,19 @@ public class SysMenu {
     /**
      * 跳转路由
      */
-    @Column(name = "path", length = 60, nullable = true)
+    @Column(name = "path", length = 60, nullable = false)
     private String path;
 
     /**
      * 图标
      */
-    @Column(name = "icon", length = 254, nullable = true)
+    @Column(name = "icon", length = 254)
     private String icon;
 
     /**
      * 排序号
      */
-    @Column(name = "sort", length = 4, nullable = false)
+    @Column(name = "sort", length = 4)
     private Integer sort;
 
     /**
@@ -62,7 +62,7 @@ public class SysMenu {
      */
     @JsonIgnore
     @NotNull(message = "gmtCreate不能为空")
-    @Column(name = "gmt_create", nullable = false)
+    @Column(name = "gmt_create")
     private Timestamp gmtCreate;
 
     /**
@@ -70,13 +70,13 @@ public class SysMenu {
      */
     @JsonIgnore
     @NotNull(message = "gmtModified不能为空")
-    @Column(name = "gmt_modified", nullable = false)
+    @Column(name = "gmt_modified")
     private Timestamp gmtModified;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
     @NotNull(message = "deleteFlag不能为空")
-    @Column(name = "delete_flag", length = 4, nullable = false)
+    @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag;
 }

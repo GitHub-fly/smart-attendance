@@ -15,13 +15,13 @@ import java.util.Date;
  **/
 @Entity
 @Data
-@Table(name = "sys_user", indexes = {@Index(name= "sys_job_numberIndex", columnList = "sys_job_number")})
+@Table(name = "sys_user", indexes = {@Index(name = "sys_job_numberIndex", columnList = "sys_job_number")})
 public class SysUser {
     /**
      * 用户id
      */
     @Id
-    @Column(name = "pk_sys_user_id", length = 32)
+    @Column(name = "pk_sys_user_id", length = 32, nullable = false)
     @NotNull
     private String pkSysUserId;
 
@@ -29,7 +29,7 @@ public class SysUser {
      * 用户真实名字
      */
     @NotNull
-    @Column(name = "sys_user_name", length = 60)
+    @Column(name = "sys_user_name", length = 60, nullable = false)
     private String sysUserName;
 
     /**
@@ -50,32 +50,9 @@ public class SysUser {
      * 学号、教工号、职工号
      */
     @NotNull
-    @Column(name = "sys_job_number", length = 60)
+    @Column(name = "sys_job_number", length = 60, nullable = false)
     private String sysJobNumber;
 
-    /**
-     * 阿姨所管楼层
-     */
-    @Column(name = "sys_room", length = 60)
-    private String sysRoom;
-
-    /**
-     * 学生所属房间
-     */
-    @Column(name = "room_number", length = 60)
-    private String roomNumber;
-
-    /**
-     * 学生的床位号
-     */
-    @Column(name = "room_bed_number", length = 11)
-    private Integer roomBedNumber;
-
-    /**
-     * 班主任名称
-     */
-    @Column(name = "sys_user_teacher_name", length = 60)
-    private String sysUserTeacherName;
 
     /**
      * 学生的辅导员姓名
@@ -91,35 +68,30 @@ public class SysUser {
 
 
     /**
-     * 学生所属班级或班主任管理班级
+     * 学生所属班级或班主任管理班级 id
      */
-    @Column(name = "sys_class_name", length = 60)
-    private String sysClassName;
+    @Column(name = "sys_class_id")
+    private String sysClassId;
 
-    /**
-     * 学生所属院系
-     */
-    @Column(name = "sys_user_academy", length = 60)
-    private String sysUserAcademy;
 
     /**
      * 学生今日打卡
      */
-    @Column(name = "is_attendance", length = 0)
+    @Column(name = "is_attendance")
     private Integer isAttendance;
 
     /**
      * 用户密码
      */
     @NotNull
-    @Column(name = "sys_user_password", length = 32)
+    @Column(name = "sys_user_password", length = 32, nullable = false)
     private String sysUserPassword;
 
     /**
      * 手机号
      */
     @NotNull
-    @Column(name = "sys_user_phone", length = 30)
+    @Column(name = "sys_user_phone", length = 30, nullable = false)
     private String sysUserPhone;
 
     /**
@@ -133,14 +105,14 @@ public class SysUser {
      * 所属角色id
      */
     @NotNull
-    @Column(name = "role_id", length = 11)
-    private Integer RoleId;
+    @Column(name = "role_id", length = 11, nullable = false)
+    private Integer roleId;
 
     /**
      * 加盐
      */
     @NotNull
-    @Column(name = "salt", length = 60)
+    @Column(name = "salt", length = 60, nullable = false)
     private String salt;
 
     /**

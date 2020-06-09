@@ -1,6 +1,5 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
-import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
