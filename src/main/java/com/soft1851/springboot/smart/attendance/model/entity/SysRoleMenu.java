@@ -1,6 +1,5 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +11,9 @@ import java.sql.Timestamp;
 
 /**
  * @author smart-attendance
- * @Description 资源权限表
- * @Date 2020/5/25 21:29
+ * @ClassName SysRoleMMenu
+ * @Description TODO
+ * @Date 2020/6/8
  * @Version 1.0
  **/
 @Data
@@ -21,46 +21,32 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder
 @Entity
-public class SysMenu {
-
+public class SysRoleMenu {
     /**
      * 主键
      */
-    @NotNull(message = "pkMenuId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_menu_id", nullable = false)
-    private Long pkMenuId;
+    @Column(name = "pk_id", nullable = false)
+    private Integer pkId;
 
     /**
-     * 名称
+     * 角色id
      */
-    @NotNull(message = "name不能为空")
-    @Column(name = "name", length = 32, nullable = false)
-    private String name;
+    @NotNull(message = "pkRoleId不能为空")
+    @Column(name = "role_id", nullable = false)
+    private Integer roleId;
 
     /**
-     * 跳转路由
+     * 权限id
      */
-    @Column(name = "path", length = 60, nullable = true)
-    private String path;
-
-    /**
-     * 图标
-     */
-    @Column(name = "icon", length = 254, nullable = true)
-    private String icon;
-
-    /**
-     * 排序号
-     */
-    @Column(name = "sort", length = 4, nullable = false)
-    private Integer sort;
+    @NotNull(message = "menuId不能为空")
+    @Column(name = "menu_id", nullable = false)
+    private Long menuId;
 
     /**
      * 创建时间
      */
-    @JsonIgnore
     @NotNull(message = "gmtCreate不能为空")
     @Column(name = "gmt_create", nullable = false)
     private Timestamp gmtCreate;
@@ -68,7 +54,6 @@ public class SysMenu {
     /**
      * 修改时间
      */
-    @JsonIgnore
     @NotNull(message = "gmtModified不能为空")
     @Column(name = "gmt_modified", nullable = false)
     private Timestamp gmtModified;
@@ -76,7 +61,8 @@ public class SysMenu {
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @NotNull(message = "deleteFlag不能为空")
-    @Column(name = "delete_flag", length = 4, nullable = false)
-    private Integer deleteFlag;
+    @NotNull(message = "isDeleted不能为空")
+    @Column(name = "deleted_flag", length = 4, nullable = false)
+    private Integer deletedFlag;
 }
+

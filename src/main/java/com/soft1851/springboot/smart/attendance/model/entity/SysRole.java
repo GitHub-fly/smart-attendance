@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,38 +24,31 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder
 @Entity
-public class SysMenu {
+@EntityListeners(AuditingEntityListener.class)
+public class SysRole {
 
     /**
-     * 主键
+     * 角色id
      */
-    @NotNull(message = "pkMenuId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_menu_id", nullable = false)
-    private Long pkMenuId;
+    @Column(name = "pk_role_id", nullable = false)
+    private Long pkRoleId;
 
     /**
-     * 名称
+     * 角色名
      */
-    @NotNull(message = "name不能为空")
-    @Column(name = "name", length = 32, nullable = false)
-    private String name;
+    @Column(name = "role_name", length = 32, nullable = false)
+    private String roleName;
 
     /**
-     * 跳转路由
+     * 角色描述
      */
-    @Column(name = "path", length = 60, nullable = true)
-    private String path;
+    @Column(name = "role_decoration", length = 254, nullable = false)
+    private String roleDecoration;
 
     /**
-     * 图标
-     */
-    @Column(name = "icon", length = 254, nullable = true)
-    private String icon;
-
-    /**
-     * 排序号
+     * 排序字段
      */
     @Column(name = "sort", length = 4, nullable = false)
     private Integer sort;
@@ -61,7 +57,6 @@ public class SysMenu {
      * 创建时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtCreate不能为空")
     @Column(name = "gmt_create", nullable = false)
     private Timestamp gmtCreate;
 
@@ -69,14 +64,14 @@ public class SysMenu {
      * 修改时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtModified不能为空")
-    @Column(name = "gmt_modified", nullable = false)
+    @LastModifiedDate
+    @Column(name = "mgt_modified", nullable = false)
     private Timestamp gmtModified;
 
     /**
-     * 是否删除（1 逻辑删除， 0 未删除）
+     * 是否删除（0 逻辑删除， 1 未删除）
      */
-    @NotNull(message = "deleteFlag不能为空")
     @Column(name = "delete_flag", length = 4, nullable = false)
     private Integer deleteFlag;
+
 }
