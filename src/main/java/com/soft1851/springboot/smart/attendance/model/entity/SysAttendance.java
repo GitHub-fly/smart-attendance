@@ -57,23 +57,20 @@ public class SysAttendance {
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @NotNull(message = "isDeleted不能为空")
-    @Column(name = "is_deleted", length = 4, nullable = false)
-    private Integer isDeleted;
+    @Column(name = "delete_flag", length = 4)
+    private Integer deleteFlag;
 
     /**
      * 创建时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtCreate不能为空")
-    @Column(name = "gmt_create", nullable = false)
+    @Column(name = "gmt_create")
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
     @JsonIgnore
-    @NotNull(message = "gmtModified不能为空")
-    @Column(name = "gmt_modified", nullable = false)
+    @Column(name = "gmt_modified")
     private Timestamp gmtModified;
 }

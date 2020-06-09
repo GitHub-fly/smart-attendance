@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 /**
  * @author Zeng
  * @ClassName SysNote
- * @Description TOOD
+ * @Description 假条数据
  * @Date 2020/6/8
  * @Version 1.0
  **/
@@ -27,7 +27,7 @@ public class SysNote {
     /**
      * 主键
      */
-//    @NotNull(message = "pkNoteId不能为空")
+    @NotNull(message = "pkNoteId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
@@ -120,7 +120,6 @@ public class SysNote {
      * 创建时间
      */
     @JsonIgnore
-//    @NotNull(message = "gmtCreate不能为空")
     @Column(name = "gmt_create")
     private Timestamp gmtCreate;
 
@@ -135,7 +134,6 @@ public class SysNote {
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-//    @NotNull(message = "deleteFlag不能为空")
     @Column(name = "is_deleted", length = 4)
     private Integer deleteFlag;
 }
