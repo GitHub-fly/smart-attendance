@@ -1,15 +1,11 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
-import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class SysNoteRepositoryTest {
