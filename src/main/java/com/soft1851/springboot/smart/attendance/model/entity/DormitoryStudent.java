@@ -28,7 +28,7 @@ public class DormitoryStudent {
     /**
      * 主键
      */
-    @NotNull(message = "pkId不能为空")
+//    @NotNull(message = "pkId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_id", nullable = false)

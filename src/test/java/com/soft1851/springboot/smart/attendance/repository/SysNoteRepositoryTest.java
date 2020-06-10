@@ -18,6 +18,7 @@ public class SysNoteRepositoryTest {
         SysNote sysNote = SysNote.builder()
                 .userId("001")
                 .type(1)
+                .userPhone("18851998839")
                 .dayCount(2)
                 .isDormitory(1)
                 .isSchool(0)
@@ -26,5 +27,7 @@ public class SysNoteRepositoryTest {
                 .reason("我今天不舒服")
                 .build();
         System.out.println(sysNoteRepository.save(sysNote));
+        SysNote s = sysNoteRepository.save(sysNote);
+        System.out.println(s.getPkNoteId());
     }
 }
