@@ -57,7 +57,6 @@ public class SysUser {
     @Column(name = "sys_job_number", length = 60, nullable = false)
     private String sysJobNumber;
 
-
     /**
      * 学生的辅导员姓名
      */
@@ -70,13 +69,11 @@ public class SysUser {
     @Column(name = "sys_user_academy_teacher_name", length = 60)
     private String sysUserAcademyTeacherName;
 
-
     /**
      * 学生所属班级或班主任管理班级 id
      */
     @Column(name = "sys_clazz_id")
     private Long sysClazzId;
-
 
     /**
      * 学生今日打卡

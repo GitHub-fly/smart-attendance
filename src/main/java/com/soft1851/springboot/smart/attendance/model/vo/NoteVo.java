@@ -23,19 +23,36 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class NoteVo {
-//    学生姓名
+    /**
+     * 学生姓名
+     */
     private String sysUserName;
-//    学生性别
+
+    /**
+     * 学生性别
+     */
     private String sysUserGender;
-//    学生电话
+
+    /**
+     * 学生电话
+     */
     private String userPhone;
-//      学号、教工号、职工号
+
+    /**
+     * 学号、教工号、职工号
+     */
     private String sysJobNumber;
-    private String ClassName;
+
+    /**
+     * 班级名
+     */
+    private String clazzName;
+
     /**
      * 班主任名称
      */
     private String teacherName;
+
     /**
      * 请假类型
      * 1 -> 事假
@@ -99,4 +116,5 @@ public class NoteVo {
      * 同意或者不同意
      */
     private String academyOpinion;
+
 }

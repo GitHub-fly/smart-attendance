@@ -19,6 +19,7 @@ import javax.annotation.Resource;
  **/
 @Service
 public class SysNoteServiceImpl implements SysNoteService {
+
     @Resource
     private SysNoteRepository sysNoteRepository;
 
@@ -43,7 +44,7 @@ public class SysNoteServiceImpl implements SysNoteService {
      * 查询假条信息
      */
     @Override
-    public NoteVo findNote(Long noteId){
+    public NoteVo findNote(Long noteId) {
         return sysNoteRepository.findNoteVoByPkNoteId(noteId);
     }
 

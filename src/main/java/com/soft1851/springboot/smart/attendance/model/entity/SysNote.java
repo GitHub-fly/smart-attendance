@@ -33,7 +33,7 @@ public class SysNote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
-    private long pkNoteId;
+    private Long pkNoteId;
 
     /**
      * 用户id
