@@ -19,35 +19,27 @@ import javax.annotation.Resource;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/note")
 public class NoteController {
+
     @Resource
     private SysNoteService sysNoteService;
     @Resource
     private SysNoteRepository sysNoteRepository;
 
-    @PostMapping("note/increase")
+    @PostMapping("/increase")
     public NoteIdVo getPkNoteId(@RequestBody NoteDto noteDto) {
-//        SysNote sysNote = SysNote.builder()
-//                .userId(noteDto.getUserId())
-//                .type(noteDto.getType())
-//                .userPhone(noteDto.getUserPhone())
-//                .dayCount(noteDto.getDayCount())
-//                .isDormitory(noteDto.getIsDormitory())
-//                .isSchool(noteDto.getIsSchool())
-//                .startTime(noteDto.getStartTime())
-//                .finishTime(noteDto.getFinishTime())
-//                .reason(noteDto.getReason())
-//                .build();
-
-//        return NoteVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
         return sysNoteService.findNoteId(noteDto);
     }
 
+
     /**
      * 查询假条信息
+     *
+     * @param noteId 假条 id
+     * @return
      */
-    @PostMapping("note/info")
+    @PostMapping("/info")
     public NoteVo getNote(@RequestBody Long noteId) {
         return sysNoteService.findNote(noteId);
     }

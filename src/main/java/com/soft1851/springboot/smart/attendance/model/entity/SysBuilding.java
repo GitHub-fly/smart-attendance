@@ -1,7 +1,10 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -18,7 +21,11 @@ import java.sql.Timestamp;
  **/
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class SysBuilding {
+
     /**
      * 楼层id
      */
@@ -54,6 +61,5 @@ public class SysBuilding {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
-
 
 }

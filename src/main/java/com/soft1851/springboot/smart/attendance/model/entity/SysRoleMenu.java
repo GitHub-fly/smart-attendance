@@ -25,6 +25,7 @@ import java.sql.Timestamp;
 @Builder
 @Entity
 public class SysRoleMenu {
+
     /**
      * 主键
      */
@@ -67,5 +68,6 @@ public class SysRoleMenu {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }
 

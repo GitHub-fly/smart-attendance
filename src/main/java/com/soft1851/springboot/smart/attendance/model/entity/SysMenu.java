@@ -28,7 +28,6 @@ public class SysMenu {
     /**
      * 主键
      */
-//    @NotNull(message = "pkMenuId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_menu_id", nullable = false)
@@ -79,4 +78,5 @@ public class SysMenu {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }

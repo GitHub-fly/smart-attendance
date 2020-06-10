@@ -24,10 +24,15 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api/attendance")
 public class SysAttendanceController {
-    /**今日日期*/
+
+    /**
+     * 今日日期
+     */
     String now = DateUtil.today();
 
-    /**打卡开始和结束时间*/
+    /**
+     * 打卡开始和结束时间
+     */
     String starTime = now + " 13:00:00";
     String endTime = now + " 22:00:00";
 
@@ -40,10 +45,11 @@ public class SysAttendanceController {
 
     @PostMapping("/increase")
     public ResponseResult checkIn(@RequestBody AttendanceDto attendanceDto) {
-        //判断当前时间是否在打卡时间段内
+        // 判断当前时间是否在打卡时间段内
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
             return ResponseResult.failure(ResultCode.ATTENDANCE_TIME_OUT);
         }
         return attendanceService.checkIn(attendanceDto);
     }
+
 }

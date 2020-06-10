@@ -17,5 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class NoteIdVo implements EntityVo {
+
+    /**
+     * 假条 id
+     */
     private long noteId;
 }

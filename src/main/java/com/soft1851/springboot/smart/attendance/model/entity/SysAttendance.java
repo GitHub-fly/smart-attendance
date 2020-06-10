@@ -26,10 +26,10 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "sys_attendance", indexes = {@Index(name = "user_idIndex", columnList = "user_id") })
 public class SysAttendance {
+
     /**
      * 主键
      */
-//    @NotNull(message = "pkId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_id",length = 0, nullable = false)
@@ -76,4 +76,5 @@ public class SysAttendance {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }

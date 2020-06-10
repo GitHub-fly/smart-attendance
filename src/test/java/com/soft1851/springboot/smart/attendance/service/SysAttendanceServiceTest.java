@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SysAttendanceServiceTest {
@@ -36,4 +35,5 @@ class SysAttendanceServiceTest {
                 .build();
         attendanceService.checkIn(dto).getMsg();
     }
+
 }

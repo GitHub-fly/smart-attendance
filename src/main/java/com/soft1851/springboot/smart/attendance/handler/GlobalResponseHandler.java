@@ -13,15 +13,18 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 /**
  * @author smart-attendance
  * @Description TODO
- * @Date 2020/4/21
+ * @Date 2020/6/10
  * @Version 1.0
  */
 @RestControllerAdvice(annotations = RestController.class)
 public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
 
-
     /**
      * 此处如果返回false , 则不执行当前Advice的业务
+     *
+     * @param returnType
+     * @param converterType
+     * @return
      */
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
@@ -30,6 +33,14 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
 
     /**
      * 处理响应的具体方法
+     *
+     * @param body
+     * @param returnType
+     * @param selectedContentType
+     * @param selectedConverterType
+     * @param request
+     * @param response
+     * @return
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
@@ -40,4 +51,5 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
             return ResponseResult.success(body);
         }
     }
+
 }

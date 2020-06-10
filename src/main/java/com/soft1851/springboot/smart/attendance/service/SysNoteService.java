@@ -13,13 +13,21 @@ import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
  * @Version 1.0
  **/
 public interface SysNoteService {
+
     /**
      * 返回假条id
+     *
+     * @param noteDto
+     * @return
      */
     NoteIdVo findNoteId(NoteDto noteDto);
 
     /**
-     * 查询假条信息
+     * 返回假条id
+     *
+     * @param noteId
+     * @return
      */
     NoteVo findNote(Long noteId);
+
 }

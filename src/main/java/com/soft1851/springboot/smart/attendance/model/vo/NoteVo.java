@@ -4,11 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -23,9 +19,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class NoteVo {
-<<<<<<< HEAD
-    private Long noteId;
-=======
+
     /**
      * 学生姓名
      */
@@ -120,5 +114,4 @@ public class NoteVo {
      */
     private String academyOpinion;
 
->>>>>>> c46c7a8644e30670716ce39a50877393757e25d6
 }

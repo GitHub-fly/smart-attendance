@@ -24,6 +24,7 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
 
     @Resource
     private SysUserRepository userRepository;
+
     @Resource
     private SysAttendanceRepository attendanceRepository;
 

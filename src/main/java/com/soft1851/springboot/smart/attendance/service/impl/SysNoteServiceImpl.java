@@ -42,6 +42,9 @@ public class SysNoteServiceImpl implements SysNoteService {
 
     /**
      * 查询假条信息
+     *
+     * @param noteId
+     * @return
      */
     @Override
     public NoteVo findNote(Long noteId) {

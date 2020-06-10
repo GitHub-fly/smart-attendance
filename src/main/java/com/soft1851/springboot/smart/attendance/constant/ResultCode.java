@@ -7,6 +7,7 @@ package com.soft1851.springboot.smart.attendance.constant;
  * @Version 1.0
  */
 public enum ResultCode {
+
     /* 成功状态码 */
     SUCCESS(1, "成功"),
     FAILURE(2, "失败"),
@@ -22,7 +23,6 @@ public enum ResultCode {
     BOUND_STATEMENT_NOT_FOUND(10008, "Mybatis未绑定"),
     CONNECTION_ERROR(10009, "网络连接错误"),
     ARITHMETIC_ERROR(100010,"计算错误"),
-
 
 
     /* 用户错误：20001-29999*/

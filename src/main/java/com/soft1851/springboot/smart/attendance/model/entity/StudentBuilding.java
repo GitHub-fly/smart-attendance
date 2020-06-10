@@ -1,6 +1,10 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -10,13 +14,16 @@ import java.sql.Timestamp;
 
 /**
  * @author ke
- * @ClassName UserBuiding
+ * @ClassName StudentBuilding
  * @Description TOOD
  * @Date 2020/6/9
  * @Version 1.0
  **/
 @Entity
-@NotNull
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentBuilding {
 
     /**
@@ -25,6 +32,7 @@ public class StudentBuilding {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pkId;
+
     /**
      * 阿姨id
      */

@@ -5,15 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @author ke
@@ -29,6 +25,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysUser {
+
     /**
      * 用户id
      */
@@ -140,4 +137,5 @@ public class SysUser {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }

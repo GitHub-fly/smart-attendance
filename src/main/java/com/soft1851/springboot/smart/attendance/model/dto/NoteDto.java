@@ -21,23 +21,49 @@ import java.util.Date;
 @Builder
 public class NoteDto {
 
-    //  用户id
+    /**
+     * 用户id
+     */
     private String userId;
-    //  请假类型
+
+    /**
+     * 请假类型
+     */
     private Integer type;
-//    用户手机号
+
+    /**
+     * 用户手机号
+     */
     private String userPhone;
-//    请假天数
+
+    /**
+     * 请假天数
+     */
     private Integer dayCount;
-//    是否归寝
+
+    /**
+     * 是否归寝
+     */
     private Integer isDormitory;
-//   是否出校
+
+    /**
+     * 是否出校
+     */
     private Integer isSchool;
-//    请假开始时间
+    /**
+     * 请假开始时间
+     */
+
     private Timestamp startTime;
-//    请假结束时间
+
+    /**
+     * 请假结束时间
+     */
     private Timestamp finishTime;
-//    请假理由
+
+    /**
+     * 请假理由
+     */
     private String reason;
 
 }

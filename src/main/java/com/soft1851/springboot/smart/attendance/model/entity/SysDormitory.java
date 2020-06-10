@@ -9,7 +9,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 /**
@@ -30,7 +29,6 @@ public class SysDormitory {
     /**
      * 主键
      */
-//    @NotNull(message = "pkSysDormitoryId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_sys_dormitory_id",length = 0, nullable = false)
@@ -70,6 +68,7 @@ public class SysDormitory {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }
 
 

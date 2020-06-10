@@ -1,7 +1,10 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.hibernate.annotations.DynamicInsert;
@@ -22,6 +25,9 @@ import java.sql.Timestamp;
 @Data
 @DynamicInsert
 @DynamicUpdate
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserBuilding {
     /**
      * 流水id

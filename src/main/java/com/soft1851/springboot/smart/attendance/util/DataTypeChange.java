@@ -13,40 +13,11 @@ import java.util.Map;
 
 /**
  * @Description TODO
- * @Author wf
- * @Date 2020/5/30
+ * @Author smart-attendance
+ * @Date 2020/6/10
  * @Version 1.0
  */
-public class DataTypeChange<obj> {
-
-    /**
-     * object转换为map
-     *
-     * @param objects
-     * @return
-     */
-    public static List<Map<String, Object>> objectToMap(Object[] objects) {
-        if (objects == null) {
-            return null;
-        }
-        List<Map<String, Object>> maps = new ArrayList<>();
-        for (Object obj : objects) {
-            try {
-                Map<String, Object> map = new LinkedHashMap<>();
-                Field[] fields = obj.getClass().getDeclaredFields();
-                for (Field field : fields) {
-                    //设置私有属性为true
-                    field.setAccessible(true);
-                    //获取字段名和字段值
-                    map.put(field.getName(), field.get(obj));
-                }
-                maps.add(map);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return maps;
-    }
+public class DataTypeChange {
 
     /**
      * 将 List<Object> 对象转为指定类型的 List 集合
@@ -133,6 +104,7 @@ public class DataTypeChange<obj> {
         }
         return data;
     }
+
 }
 
 

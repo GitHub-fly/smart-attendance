@@ -14,6 +14,7 @@ public class SysNoteServiceTest {
 
     @Test
     void findNote() {
-        System.out.println(sysNoteService.findNote(1l));
+        System.out.println(sysNoteService.findNote(1L));
     }
+
 }

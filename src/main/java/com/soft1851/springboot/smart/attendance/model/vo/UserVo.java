@@ -5,9 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -48,7 +45,6 @@ public class UserVo implements EntityVo {
      */
     @NotNull
     private String sysJobNumber;
-
 
     /**
      * 学生的辅导员姓名
@@ -100,4 +96,5 @@ public class UserVo implements EntityVo {
      * 班级所属院系
      */
     private String academyName;
+
 }

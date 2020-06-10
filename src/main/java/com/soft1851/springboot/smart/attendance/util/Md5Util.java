@@ -13,6 +13,7 @@ import java.util.Base64;
  * @Version 1.0
  **/
 public class Md5Util {
+
     /**
      * @param pwd     需要加密的字符串
      * @param isUpper 字母大小写(false为默认小写，true为大写)
@@ -61,7 +62,6 @@ public class Md5Util {
             e.printStackTrace();
             System.out.println("md5加密抛出异常！");
         }
-
         return md5;
     }
 

@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class AttendanceDto {
+
     /**
      * 用户id
      */
@@ -31,4 +32,5 @@ public class AttendanceDto {
      * 纬度
      */
     private String latitude;
+
 }

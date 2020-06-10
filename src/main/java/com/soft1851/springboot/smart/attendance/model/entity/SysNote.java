@@ -9,7 +9,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -27,6 +26,7 @@ import java.util.Date;
 @Entity
 @Table(name = "sys_note", indexes = {@Index(name = "user_idIndex", columnList = "user_id")})
 public class SysNote {
+
     /**
      * 主键
      */
@@ -138,4 +138,5 @@ public class SysNote {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
+
 }

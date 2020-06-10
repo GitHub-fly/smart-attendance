@@ -20,4 +20,5 @@ public interface SysUserService {
      * @return 返回用户的基本信息和功能权限
      */
     Map<String, Object> login(LoginDto loginDto);
+
 }

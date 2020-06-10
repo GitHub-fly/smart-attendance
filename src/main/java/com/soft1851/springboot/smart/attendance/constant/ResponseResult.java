@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class ResponseResult implements Serializable {
+
     private static final long serialVersionUID = -3948389268046368059L;
 
     private Integer code;
@@ -33,7 +34,6 @@ public class ResponseResult implements Serializable {
         result.setResultCode(ResultCode.SUCCESS);
         return result;
     }
-
 
     public static ResponseResult failure() {
         ResponseResult result = new ResponseResult();

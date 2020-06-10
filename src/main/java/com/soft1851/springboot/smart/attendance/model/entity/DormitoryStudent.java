@@ -27,10 +27,10 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "dormitory_student")
 public class DormitoryStudent {
+
     /**
      * 主键
      */
-//    @NotNull(message = "pkId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_id", nullable = false)
