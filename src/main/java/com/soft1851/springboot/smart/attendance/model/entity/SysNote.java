@@ -11,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @author Zeng
@@ -29,11 +30,10 @@ public class SysNote {
     /**
      * 主键
      */
-//    @NotNull(message = "pkNoteId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
-    private Integer pkNoteId;
+    private long pkNoteId;
 
     /**
      * 用户id
@@ -79,13 +79,13 @@ public class SysNote {
      * 请假开始时间
      */
     @Column(name = "start_time", nullable = false)
-    private Timestamp startTime;
+    private Date startTime;
 
     /**
      * 请假结束时间
      */
     @Column(name = "finish_time", nullable = false)
-    private Timestamp finishTime;
+    private Date finishTime;
 
     /**
      * 请假原因

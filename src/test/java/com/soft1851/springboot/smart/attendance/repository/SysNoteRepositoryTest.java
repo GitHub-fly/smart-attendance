@@ -1,12 +1,15 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
+import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
+import com.soft1851.springboot.smart.attendance.util.DataTypeChange;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @SpringBootTest
 public class SysNoteRepositoryTest {
@@ -29,5 +32,16 @@ public class SysNoteRepositoryTest {
         System.out.println(sysNoteRepository.save(sysNote));
         SysNote s = sysNoteRepository.save(sysNote);
         System.out.println(s.getPkNoteId());
+    }
+
+//    @Test
+//    void findAllByPkNoteIdEquals() {
+//        System.out.println( sysNoteRepository.findAllByPkNoteIdEquals(1));
+//
+//    }
+
+    @Test
+    void findNoteVoByPkNoteIdEquals() {
+        System.out.println(sysNoteRepository.findNoteVoByPkNoteId(1l));
     }
 }

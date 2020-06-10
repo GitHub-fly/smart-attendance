@@ -74,8 +74,8 @@ public class SysUser {
     /**
      * 学生所属班级或班主任管理班级 id
      */
-    @Column(name = "sys_class_id")
-    private String sysClassId;
+    @Column(name = "sys_clazz_id")
+    private Long sysClazzId;
 
 
     /**

@@ -2,6 +2,7 @@ package com.soft1851.springboot.smart.attendance.service.impl;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
+import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.repository.SysNoteRepository;
 import com.soft1851.springboot.smart.attendance.service.SysNoteService;
@@ -22,7 +23,7 @@ public class SysNoteServiceImpl implements SysNoteService {
     private SysNoteRepository sysNoteRepository;
 
     @Override
-    public NoteVo findNoteId(NoteDto noteDto) {
+    public NoteIdVo findNoteId(NoteDto noteDto) {
         SysNote sysNote = SysNote.builder()
                 .userId(noteDto.getUserId())
                 .type(noteDto.getType())
@@ -35,7 +36,15 @@ public class SysNoteServiceImpl implements SysNoteService {
                 .reason(noteDto.getReason())
                 .build();
 
-        return NoteVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
+        return NoteIdVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
+    }
+
+    /**
+     * 查询假条信息
+     */
+    @Override
+    public NoteVo findNote(Long noteId){
+        return sysNoteRepository.findNoteVoByPkNoteId(noteId);
     }
 
 }
