@@ -4,6 +4,9 @@ import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
+import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
+
+import java.util.List;
 
 /**
  * @author ke
@@ -29,5 +32,13 @@ public interface SysNoteService {
      * @return
      */
     NoteVo findNote(Long noteId);
+
+    /**
+     * 查询学生所有假条状态
+     *
+     * @param userId
+     * @return
+     */
+    List<StudentNoteVo> findAllStatus(String userId);
 
 }
