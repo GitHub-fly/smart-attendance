@@ -16,8 +16,8 @@ import javax.annotation.Resource;
  * @Date 2020/6/10
  * @Version 1.0
  **/
-@RestController
-@RequestMapping(value = "/api")
+//@RestController
+//@RequestMapping(value = "/api")
 public class InfoNoteController {
     @Resource
     private SysNoteService sysNoteService;

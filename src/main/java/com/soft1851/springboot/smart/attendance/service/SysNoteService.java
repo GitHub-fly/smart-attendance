@@ -13,5 +13,5 @@ public interface SysNoteService {
     /**
      * 插入学生请假记录
      */
-    int insertNote(NoteDto noteDto);
+    Long insertNote(NoteDto noteDto);
 }
