@@ -17,5 +17,5 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class NoteVo {
-    private Integer noteId;
+    private Long noteId;
 }

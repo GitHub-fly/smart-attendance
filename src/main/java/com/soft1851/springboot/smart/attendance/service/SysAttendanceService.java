@@ -1,5 +1,6 @@
 package com.soft1851.springboot.smart.attendance.service;
 
+import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.model.dto.AttendanceDto;
 
 /**
@@ -16,6 +17,6 @@ public interface SysAttendanceService  {
      * @param attendanceDto dto
      * @return String 用户id
      */
-    String checkIn(AttendanceDto attendanceDto);
+    ResponseResult checkIn(AttendanceDto attendanceDto);
 
 }

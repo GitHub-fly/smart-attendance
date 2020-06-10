@@ -21,7 +21,7 @@ public class SysNoteServiceImpl implements SysNoteService {
     private SysNoteRepository sysNoteRepository;
 
     @Override
-    public int insertNote(NoteDto noteDto) {
+    public Long insertNote(NoteDto noteDto) {
         SysNote sysNote = SysNote.builder()
                 .userId(noteDto.getUserId())
                 .type(noteDto.getType())

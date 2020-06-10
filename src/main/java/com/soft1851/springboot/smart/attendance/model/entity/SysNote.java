@@ -29,11 +29,10 @@ public class SysNote {
     /**
      * 主键
      */
-//    @NotNull(message = "pkNoteId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
-    private Integer pkNoteId;
+    private Long pkNoteId;
 
     /**
      * 用户id

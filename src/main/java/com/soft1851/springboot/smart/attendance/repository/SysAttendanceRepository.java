@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author ZENG
  */
-public interface SysAttendanceRepository extends JpaRepository<SysAttendance, Integer> {
+public interface SysAttendanceRepository extends JpaRepository<SysAttendance, Long> {
 }
