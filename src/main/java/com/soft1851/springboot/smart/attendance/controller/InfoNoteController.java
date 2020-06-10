@@ -26,19 +26,19 @@ public class InfoNoteController {
 
     @PostMapping("note/increase")
     public NoteVo getPkNoteId(@RequestBody NoteDto noteDto) {
-        SysNote sysNote = SysNote.builder()
-                .userId(noteDto.getUserId())
-                .type(noteDto.getType())
-                .userPhone(noteDto.getUserPhone())
-                .dayCount(noteDto.getDayCount())
-                .isDormitory(noteDto.getIsDormitory())
-                .isSchool(noteDto.getIsSchool())
-                .startTime(noteDto.getStartTime())
-                .finishTime(noteDto.getFinishTime())
-                .reason(noteDto.getReason())
-                .build();
+//        SysNote sysNote = SysNote.builder()
+//                .userId(noteDto.getUserId())
+//                .type(noteDto.getType())
+//                .userPhone(noteDto.getUserPhone())
+//                .dayCount(noteDto.getDayCount())
+//                .isDormitory(noteDto.getIsDormitory())
+//                .isSchool(noteDto.getIsSchool())
+//                .startTime(noteDto.getStartTime())
+//                .finishTime(noteDto.getFinishTime())
+//                .reason(noteDto.getReason())
+//                .build();
 
-        return NoteVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
-
+//        return NoteVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
+        return sysNoteService.findNoteId(noteDto);
     }
 }

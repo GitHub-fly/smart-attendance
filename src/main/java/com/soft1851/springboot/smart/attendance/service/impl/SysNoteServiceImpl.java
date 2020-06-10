@@ -2,6 +2,7 @@ package com.soft1851.springboot.smart.attendance.service.impl;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
+import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.repository.SysNoteRepository;
 import com.soft1851.springboot.smart.attendance.service.SysNoteService;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class SysNoteServiceImpl implements SysNoteService {
     private SysNoteRepository sysNoteRepository;
 
     @Override
-    public int insertNote(NoteDto noteDto) {
+    public NoteVo findNoteId(NoteDto noteDto) {
         SysNote sysNote = SysNote.builder()
                 .userId(noteDto.getUserId())
                 .type(noteDto.getType())
@@ -33,8 +34,8 @@ public class SysNoteServiceImpl implements SysNoteService {
                 .finishTime(noteDto.getFinishTime())
                 .reason(noteDto.getReason())
                 .build();
-        SysNote note = sysNoteRepository.save(sysNote);
-        return note.getPkNoteId();
+
+        return NoteVo.builder().noteId(sysNoteRepository.save(sysNote).getPkNoteId()).build();
     }
 
 }

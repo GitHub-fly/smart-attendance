@@ -1,6 +1,7 @@
 package com.soft1851.springboot.smart.attendance.service;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
+import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 
 /**
  * @author ke
@@ -11,7 +12,7 @@ import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
  **/
 public interface SysNoteService {
     /**
-     * 插入学生请假记录
+     * 返回假条id
      */
-    int insertNote(NoteDto noteDto);
+    NoteVo findNoteId(NoteDto noteDto);
 }
