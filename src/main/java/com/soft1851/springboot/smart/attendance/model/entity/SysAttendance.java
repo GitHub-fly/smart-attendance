@@ -57,15 +57,8 @@ public class SysAttendance {
     private String latitude;
 
     /**
-     * 是否删除（1 逻辑删除， 0 未删除）
-     */
-    @Column(name = "delete_flag", length = 4)
-    private Integer deleteFlag=0;
-
-    /**
      * 创建时间
      */
-    @JsonIgnore
     @Column(name = "gmt_create")
     @CreatedDate
     private Timestamp gmtCreate;
@@ -73,8 +66,14 @@ public class SysAttendance {
     /**
      * 修改时间
      */
-    @JsonIgnore
     @Column(name = "gmt_modified")
     @LastModifiedDate
     private Timestamp gmtModified;
+
+    /**
+     * 是否删除（1 逻辑删除， 0 未删除）
+     */
+    @JsonIgnore
+    @Column(name = "delete_flag", length = 4)
+    private Integer deleteFlag = 0;
 }

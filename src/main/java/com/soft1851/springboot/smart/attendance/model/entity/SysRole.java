@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
@@ -56,22 +57,22 @@ public class SysRole {
     /**
      * 创建时间
      */
-    @JsonIgnore
     @Column(name = "gmt_create")
+    @CreatedDate
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
-    @JsonIgnore
-    @LastModifiedDate
     @Column(name = "gmt_modified")
+    @LastModifiedDate
     private Timestamp gmtModified;
 
     /**
-     * 是否删除（0 逻辑删除， 1 未删除）
+     * 是否删除（1 逻辑删除， 0 未删除）
      */
+    @JsonIgnore
     @Column(name = "delete_flag", length = 4)
-    private Integer deleteFlag;
+    private Integer deleteFlag = 0;
 
 }
