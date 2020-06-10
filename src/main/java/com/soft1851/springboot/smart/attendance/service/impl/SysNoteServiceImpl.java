@@ -4,11 +4,13 @@ import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
+import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
 import com.soft1851.springboot.smart.attendance.repository.SysNoteRepository;
 import com.soft1851.springboot.smart.attendance.service.SysNoteService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author ke
@@ -51,4 +53,11 @@ public class SysNoteServiceImpl implements SysNoteService {
         return sysNoteRepository.findNoteVoByPkNoteId(noteId);
     }
 
+    /**
+     * 查询学生假条所有状态
+     */
+    @Override
+    public List<StudentNoteVo> findAllStatus(String userId){
+        return sysNoteRepository.findByUserIdEquals(userId);
+    }
 }

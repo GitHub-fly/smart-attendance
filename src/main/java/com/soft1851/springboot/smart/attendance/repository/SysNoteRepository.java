@@ -2,8 +2,11 @@ package com.soft1851.springboot.smart.attendance.repository;
 
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
+import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 
 /**
@@ -30,6 +33,11 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
             + "WHERE n.pkNoteId = ?1")
     NoteVo findNoteVoByPkNoteId(Long NoteId);
 
-
+    /**
+     * 查询学生所有假条
+     */
+    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo(n.pkNoteId, n.type, n.status, n.gmtCreate)"+ "FROM SysNote n " +
+            "WHERE n.userId = ?1")
+    List<StudentNoteVo> findByUserIdEquals(String userId);
 
 }

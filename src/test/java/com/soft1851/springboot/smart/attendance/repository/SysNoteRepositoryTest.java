@@ -37,4 +37,8 @@ public class SysNoteRepositoryTest {
         System.out.println(sysNoteRepository.findNoteVoByPkNoteId(1l));
     }
 
+    @Test
+    void findByUserIdEquals() {
+        sysNoteRepository.findByUserIdEquals("001").forEach(System.out::println);
+    }
 }
