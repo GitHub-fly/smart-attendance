@@ -27,8 +27,8 @@ public class SysRoleMenu {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_id", nullable = false)
-    private Integer pkId;
+    @Column(name = "pk_id")
+    private Long pkId;
 
     /**
      * 角色id

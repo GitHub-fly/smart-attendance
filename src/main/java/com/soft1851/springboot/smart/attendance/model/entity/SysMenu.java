@@ -26,7 +26,7 @@ public class SysMenu {
     /**
      * 主键
      */
-    @NotNull(message = "pkMenuId不能为空")
+//    @NotNull(message = "pkMenuId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_menu_id", nullable = false)

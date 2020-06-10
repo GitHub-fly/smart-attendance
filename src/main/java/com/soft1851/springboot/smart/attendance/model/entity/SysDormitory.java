@@ -28,7 +28,7 @@ public class SysDormitory {
     /**
      * 主键
      */
-    @NotNull(message = "pkSysDormitoryId不能为空")
+//    @NotNull(message = "pkSysDormitoryId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_sys_dormitory_id",length = 0, nullable = false)

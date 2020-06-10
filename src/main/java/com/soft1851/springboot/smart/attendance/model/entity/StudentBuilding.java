@@ -22,7 +22,7 @@ public class StudentBuilding {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer pkId;
+    private Long pkId;
     /**
      * 阿姨id
      */

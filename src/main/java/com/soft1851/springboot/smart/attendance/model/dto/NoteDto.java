@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -24,6 +25,8 @@ public class NoteDto {
     private String userId;
     //  请假类型
     private Integer type;
+//    用户手机号
+    private String userPhone;
 //    请假天数
     private Integer dayCount;
 //    是否归寝
@@ -31,9 +34,9 @@ public class NoteDto {
 //   是否出校
     private Integer isSchool;
 //    请假开始时间
-    private Date startTime;
+    private Timestamp startTime;
 //    请假结束时间
-    private Date finishTime;
+    private Timestamp finishTime;
 //    请假理由
     private String reason;
 
