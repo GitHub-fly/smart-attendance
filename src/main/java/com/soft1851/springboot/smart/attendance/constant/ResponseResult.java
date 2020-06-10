@@ -50,7 +50,7 @@ public class ResponseResult implements Serializable {
 
     public static ResponseResult failure(Object data) {
         ResponseResult result = new ResponseResult();
-        result.setResultCode(ResultCode.SUCCESS);
+        result.setResultCode(ResultCode.FAILURE);
         result.setData(data);
         return result;
     }

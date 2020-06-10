@@ -119,7 +119,7 @@ public class SysNote {
     private Integer status;
 
     /**
-     * 创建时间
+     * 创建时间`
      */
     @Column(name = "gmt_create")
     @CreatedDate
