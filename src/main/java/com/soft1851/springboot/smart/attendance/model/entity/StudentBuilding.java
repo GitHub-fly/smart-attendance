@@ -1,10 +1,6 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,39 +9,35 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 /**
- * @author smart-attendance
- * @ClassName SysRoleMMenu
- * @Description TODO
- * @Date 2020/6/8
+ * @author ke
+ * @ClassName UserBuiding
+ * @Description TOOD
+ * @Date 2020/6/9
  * @Version 1.0
  **/
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
-public class SysRoleMenu {
+@NotNull
+public class StudentBuilding {
+
     /**
-     * 主键
+     * 流水id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_id")
     private Long pkId;
+    /**
+     * 阿姨id
+     */
+    @NotNull
+    @Column(name ="student_id")
+    private Integer studentId;
 
     /**
-     * 角色id
+     * 楼层id
      */
-    @NotNull(message = "pkRoleId不能为空")
-    @Column(name = "role_id", nullable = false)
-    private Integer roleId;
-
-    /**
-     * 权限id
-     */
-    @NotNull(message = "menuId不能为空")
-    @Column(name = "menu_id", nullable = false)
-    private Long menuId;
+    @NotNull
+    @Column(name = "building_id")
+    private Integer buildingId;
 
     /**
      * 创建时间
@@ -67,5 +59,5 @@ public class SysRoleMenu {
     @JsonIgnore
     @Column(name = "delete_flag", length = 4)
     private Integer deleteFlag = 0;
-}
 
+}

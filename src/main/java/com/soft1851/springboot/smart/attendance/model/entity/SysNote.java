@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @author Zeng
@@ -27,11 +30,10 @@ public class SysNote {
     /**
      * 主键
      */
-    @NotNull(message = "pkNoteId不能为空")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pk_note_id",length = 0, nullable = false)
-    private Long pkNoteId;
+    private long pkNoteId;
 
     /**
      * 用户id
@@ -77,13 +79,13 @@ public class SysNote {
      * 请假开始时间
      */
     @Column(name = "start_time", nullable = false)
-    private Timestamp startTime;
+    private Date startTime;
 
     /**
      * 请假结束时间
      */
     @Column(name = "finish_time", nullable = false)
-    private Timestamp finishTime;
+    private Date finishTime;
 
     /**
      * 请假原因
@@ -119,21 +121,21 @@ public class SysNote {
     /**
      * 创建时间
      */
-    @JsonIgnore
     @Column(name = "gmt_create")
+    @CreatedDate
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
-    @JsonIgnore
-
     @Column(name = "gmt_modified")
+    @LastModifiedDate
     private Timestamp gmtModified;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @Column(name = "is_deleted", length = 4)
-    private Integer deleteFlag;
+    @JsonIgnore
+    @Column(name = "delete_flag", length = 4)
+    private Integer deleteFlag = 0;
 }
