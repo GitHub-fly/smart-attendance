@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -58,13 +60,14 @@ public class SysAttendance {
      * 是否删除（1 逻辑删除， 0 未删除）
      */
     @Column(name = "delete_flag", length = 4)
-    private Integer deleteFlag;
+    private Integer deleteFlag=0;
 
     /**
      * 创建时间
      */
     @JsonIgnore
     @Column(name = "gmt_create")
+    @CreatedDate
     private Timestamp gmtCreate;
 
     /**
@@ -72,5 +75,6 @@ public class SysAttendance {
      */
     @JsonIgnore
     @Column(name = "gmt_modified")
+    @LastModifiedDate
     private Timestamp gmtModified;
 }
