@@ -2,6 +2,8 @@ package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -40,24 +42,22 @@ public class UserBuilding {
     /**
      * 创建时间
      */
-    @JsonIgnore
-//    @NotNull(message = "gmtCreate不能为空")
     @Column(name = "gmt_create")
+    @CreatedDate
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
-    @JsonIgnore
-
     @Column(name = "gmt_modified")
+    @LastModifiedDate
     private Timestamp gmtModified;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-//    @NotNull(message = "deleteFlag不能为空")
-    @Column(name = "is_deleted", length = 4)
-    private Integer deleteFlag;
+    @JsonIgnore
+    @Column(name = "delete_flag", length = 4)
+    private Integer deleteFlag = 0;
 
 }

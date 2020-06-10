@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -60,23 +62,21 @@ public class SysMenu {
     /**
      * 创建时间
      */
-    @JsonIgnore
-    @NotNull(message = "gmtCreate不能为空")
     @Column(name = "gmt_create")
+    @CreatedDate
     private Timestamp gmtCreate;
 
     /**
      * 修改时间
      */
-    @JsonIgnore
-    @NotNull(message = "gmtModified不能为空")
     @Column(name = "gmt_modified")
+    @LastModifiedDate
     private Timestamp gmtModified;
 
     /**
      * 是否删除（1 逻辑删除， 0 未删除）
      */
-    @NotNull(message = "deleteFlag不能为空")
+    @JsonIgnore
     @Column(name = "delete_flag", length = 4)
-    private Integer deleteFlag;
+    private Integer deleteFlag = 0;
 }
