@@ -24,7 +24,7 @@ public class SysClazz {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer pkSysClazzId;
+    private Long pkSysClazzId;
     /**
      * 班级名称
      */

@@ -69,7 +69,10 @@ public enum ResultCode {
     INTERFACE_EXCEED_LOAD(60006, "接口负载过高"),
 
     /* 权限错误：70001-79999 */
-    PERMISSION_NO_ACCESS(70001, "无访问权限");
+    PERMISSION_NO_ACCESS(70001, "无访问权限"),
+
+    /* 考勤模块：80001-89999 */
+    ATTENDANCE_TIME_OUT(80001, "打卡时间错误");
 
     private Integer code;
 

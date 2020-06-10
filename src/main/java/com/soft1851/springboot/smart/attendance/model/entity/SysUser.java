@@ -1,7 +1,12 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -20,40 +25,38 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "sys_user", indexes = {@Index(name = "sys_job_numberIndex", columnList = "sys_job_number")})
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SysUser {
     /**
      * 用户id
      */
     @Id
     @Column(name = "pk_sys_user_id", length = 32, nullable = false)
-    @NotNull
     private String pkSysUserId;
 
     /**
      * 用户真实名字
      */
-    @NotNull
     @Column(name = "sys_user_name", length = 60, nullable = false)
     private String sysUserName;
 
     /**
      * 用户昵称
      */
-    @NotNull
     @Column(name = "sys_user_nickname", length = 60)
     private String sysUserNickname;
 
     /**
      * 性别
      */
-    @NotNull
     @Column(name = "sys_user_gender", length = 10)
     private String sysUserGender;
 
     /**
      * 学号、教工号、职工号
      */
-    @NotNull
     @Column(name = "sys_job_number", length = 60, nullable = false)
     private String sysJobNumber;
 
@@ -75,7 +78,7 @@ public class SysUser {
      * 学生所属班级或班主任管理班级 id
      */
     @Column(name = "sys_class_id")
-    private String sysClassId;
+    private Long sysClassId;
 
 
     /**
@@ -87,42 +90,36 @@ public class SysUser {
     /**
      * 用户密码
      */
-    @NotNull
     @Column(name = "sys_user_password", length = 32, nullable = false)
     private String sysUserPassword;
 
     /**
      * 手机号
      */
-    @NotNull
     @Column(name = "sys_user_phone", length = 30, nullable = false)
     private String sysUserPhone;
 
     /**
      * 头像
      */
-    @NotNull
     @Column(name = "sys_user_avatar", length = 254)
     private String sysUserAvatar;
 
     /**
      * 所属角色id
      */
-    @NotNull
     @Column(name = "role_id", length = 11, nullable = false)
     private Integer roleId;
 
     /**
      * 加盐
      */
-    @NotNull
     @Column(name = "salt", length = 60, nullable = false)
     private String salt;
 
     /**
      * 账户状态
      */
-    @NotNull
     @Column(name = "status", length = 4)
     private Integer status;
 

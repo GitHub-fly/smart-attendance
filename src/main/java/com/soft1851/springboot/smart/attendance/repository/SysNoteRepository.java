@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
  * @Date 2020/6/8
  * @Version 1.0
  **/
-public interface SysNoteRepository extends JpaRepository<SysNote, Integer> {
+public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
 
     /**
      * 插入学生请假记录
