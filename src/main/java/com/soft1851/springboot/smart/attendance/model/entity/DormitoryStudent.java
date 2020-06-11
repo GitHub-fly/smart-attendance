@@ -39,8 +39,8 @@ public class DormitoryStudent {
     /**
      * 学生id
      */
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @Column(name = "user_id",length = 32, nullable = false)
+    private String userId;
 
     /**
      * 宿舍id

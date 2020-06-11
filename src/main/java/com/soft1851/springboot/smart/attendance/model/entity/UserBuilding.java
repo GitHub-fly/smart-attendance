@@ -38,16 +38,14 @@ public class UserBuilding {
     /**
      * 学生id
      */
-    @NotNull
     @Column(name ="user_id")
-    private Integer userId;
+    private String userId;
 
     /**
      * 楼层id
      */
-    @NotNull
     @Column(name = "building_id")
-    private Integer buildingId;
+    private Long buildingId;
 
     /**
      * 创建时间

@@ -46,7 +46,7 @@ public class SysDormitory {
      * 班级id
      */
     @Column(name = "clazz_id", nullable = false)
-    private Integer clazzId;
+    private Long clazzId;
 
     /**
      * 创建时间
