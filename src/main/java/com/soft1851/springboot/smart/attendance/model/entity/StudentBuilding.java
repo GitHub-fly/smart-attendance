@@ -34,18 +34,16 @@ public class StudentBuilding {
     private Long pkId;
 
     /**
-     * 阿姨id
+     * 学生id
      */
-    @NotNull
     @Column(name ="student_id")
-    private Integer studentId;
+    private String studentId;
 
     /**
      * 楼层id
      */
-    @NotNull
     @Column(name = "building_id")
-    private Integer buildingId;
+    private Long buildingId;
 
     /**
      * 创建时间

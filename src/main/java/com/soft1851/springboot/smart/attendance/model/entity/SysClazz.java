@@ -36,7 +36,6 @@ public class SysClazz {
     /**
      * 班级名称
      */
-    @NotNull
     @Column(name = "name", length = 254)
     private  String name;
 
@@ -44,8 +43,13 @@ public class SysClazz {
      * 班主任名称
      */
     @Column(name = "teacher_name", length = 60)
-    @NotNull
     private String teacherName;
+
+    /**
+     * 班主任名称
+     */
+    @Column(name = "teacher_phone", length = 32)
+    private String teacherPhone;
 
     /**
      * 班级所属院系

@@ -4,15 +4,14 @@ import cn.hutool.core.date.DateUtil;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.model.dto.AttendanceDto;
+import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
 import com.soft1851.springboot.smart.attendance.service.SysAttendanceService;
 import com.soft1851.springboot.smart.attendance.util.TimeUtil;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Zeng
@@ -50,6 +49,11 @@ public class SysAttendanceController {
             return ResponseResult.failure(ResultCode.ATTENDANCE_TIME_OUT);
         }
         return attendanceService.checkIn(attendanceDto);
+    }
+
+    @PostMapping("/manager/info")
+    public List<EntityVo> queryCheckInfo(@RequestParam("managerId") String managerId) {
+        return attendanceService.queryCheckInfo(managerId);
     }
 
 }
