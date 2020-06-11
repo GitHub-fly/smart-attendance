@@ -27,4 +27,17 @@ public interface SysDormitoryRepository extends JpaRepository<SysDormitory, Long
             "LEFT JOIN sys_clazz c ON d.clazz_id=c.pk_sys_clazz_id " +
             "WHERE d.pk_sys_dormitory_id IN ?1 ",nativeQuery = true)
     List<Object> findDormitoryByIds(List<Long> dormitoryId);
+
+    /**
+     * 根据宿舍id查看宿舍内成员打卡信息
+     * @param dormitoryId
+     * @return
+     */
+    @Query(value = "SELECT ds.bed_number,ds.user_id,u.sys_user_name,u.is_attendance " +
+            "FROM sys_dormitory d " +
+            "LEFT JOIN dormitory_student ds ON d.pk_sys_dormitory_id=ds.dormitory_id " +
+            "LEFT JOIN sys_user u ON u.pk_sys_user_id=ds.user_id " +
+            "WHERE d.pk_sys_dormitory_id=?1 ", nativeQuery = true)
+    List<Object> findStuCheckInfo(Long dormitoryId);
+
 }

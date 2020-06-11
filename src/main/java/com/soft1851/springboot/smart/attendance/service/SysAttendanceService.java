@@ -31,4 +31,11 @@ public interface SysAttendanceService {
      */
     List<EntityVo> queryCheckInfo(String managerId);
 
+    /**
+     * 根据宿舍id查看宿舍内成员打卡信息
+     * @param dormitoryId
+     * @return
+     */
+    List<EntityVo> queryStuCheckInfo(Long dormitoryId);
+
 }

@@ -56,4 +56,9 @@ public class SysAttendanceController {
         return attendanceService.queryCheckInfo(managerId);
     }
 
+    @PostMapping("/info/number")
+    public List<EntityVo> queryStuCheckInfo(@RequestParam("dormitoryId") Long managerId) {
+        return attendanceService.queryStuCheckInfo(managerId);
+    }
+
 }

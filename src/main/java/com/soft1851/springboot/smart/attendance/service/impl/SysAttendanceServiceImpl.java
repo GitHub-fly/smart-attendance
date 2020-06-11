@@ -7,6 +7,7 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysAttendance;
 import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.DormitoryVo;
 import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
+import com.soft1851.springboot.smart.attendance.model.vo.StuCheckInVo;
 import com.soft1851.springboot.smart.attendance.repository.*;
 import com.soft1851.springboot.smart.attendance.service.SysAttendanceService;
 import com.soft1851.springboot.smart.attendance.util.DataTypeChange;
@@ -83,6 +84,13 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
         // 查到宿舍信息
         List<Object> objectList = dormitoryRepository.findDormitoryByIds(dormitoryIds);
         List<EntityVo> entityVos = DataTypeChange.changeObj(objectList, DormitoryVo.class);
+        return entityVos;
+    }
+
+    @Override
+    public List<EntityVo> queryStuCheckInfo(Long dormitoryId) {
+        List<Object> objects = dormitoryRepository.findStuCheckInfo(dormitoryId);
+        List<EntityVo> entityVos = DataTypeChange.changeObj(objects, StuCheckInVo.class);
         return entityVos;
     }
 
