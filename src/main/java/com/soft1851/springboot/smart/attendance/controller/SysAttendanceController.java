@@ -61,4 +61,14 @@ public class SysAttendanceController {
         return attendanceService.queryStuCheckInfo(managerId);
     }
 
+    @PostMapping("/info/not")
+    public List<EntityVo> queryUnStuCheckInfo(@RequestParam("managerId") String managerId) {
+        return attendanceService.queryUnCheckInfo(managerId);
+    }
+
+    @PostMapping("/user/info")
+    public EntityVo queryStuInfo(@RequestParam("pkUserId") String pkUserId) {
+        return attendanceService.queryStuInfo(pkUserId).get(0);
+    }
+
 }

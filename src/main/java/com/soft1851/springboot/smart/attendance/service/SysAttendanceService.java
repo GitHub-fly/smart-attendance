@@ -38,4 +38,18 @@ public interface SysAttendanceService {
      */
     List<EntityVo> queryStuCheckInfo(Long dormitoryId);
 
+    /**
+     * 宿管查看所有未打卡的学生信息接口
+     * @param managerId 宿管id
+     * @return List
+     */
+    List<EntityVo> queryUnCheckInfo(String managerId);
+
+    /**
+     * 根据id查看学生详情接口
+     * @param studentId
+     * @return
+     */
+    List<EntityVo> queryStuInfo(String studentId);
+
 }
