@@ -33,7 +33,7 @@ public class SysUserServiceImpl implements SysUserService {
         Map<String, Object> map = new HashMap<>(3);
         List<Object> userInfoObj = sysUserRepository.getUserInfo(loginDto.getAccount());
         // 若此账号查找不存在，在返回账号不存在异常
-        if (userInfoObj == null) {
+        if (userInfoObj.size() == 0) {
             throw new CustomException("账号不存在", ResultCode.USER_ACCOUNT_ERROR);
         }
         // 得到用户的基本信息

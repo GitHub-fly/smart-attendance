@@ -19,7 +19,7 @@ class SysUserRepositoryTest {
     @Test
     void getSysUserBySysUserPhone() {
         List<Object> userInfoObj = sysUserRepository.getUserInfo("18851999738");
-        DataTypeChange.changeObj(userInfoObj, UserVo.class).forEach(System.out::println);
+        System.out.println(DataTypeChange.changeObj(userInfoObj, UserVo.class).size());
     }
 
 }
