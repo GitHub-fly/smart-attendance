@@ -1,6 +1,7 @@
 package com.soft1851.springboot.smart.attendance.controller;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
+import com.soft1851.springboot.smart.attendance.model.dto.OpinionDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
@@ -57,4 +58,8 @@ public class NoteController {
         return sysNoteService.findAllStatus(sysNote.getUserId());
     }
 
+    @PostMapping("teacher/advice")
+    public int updateNoteOpinoin(@RequestBody OpinionDto opinionDto) {
+        return sysNoteService.updateTeacherOpinoin(opinionDto);
+    }
 }

@@ -1,6 +1,7 @@
 package com.soft1851.springboot.smart.attendance.service;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
+import com.soft1851.springboot.smart.attendance.model.dto.OpinionDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
@@ -41,4 +42,8 @@ public interface SysNoteService {
      */
     List<StudentNoteVo> findAllStatus(String userId);
 
+    /**
+     * 老师审核意见
+     */
+    int updateTeacherOpinoin(OpinionDto opinionDto);
 }

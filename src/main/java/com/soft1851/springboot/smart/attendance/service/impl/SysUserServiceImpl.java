@@ -3,6 +3,9 @@ package com.soft1851.springboot.smart.attendance.service.impl;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.exception.CustomException;
 import com.soft1851.springboot.smart.attendance.model.dto.LoginDto;
+
+import com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo;
+
 import com.soft1851.springboot.smart.attendance.model.vo.UserVo;
 import com.soft1851.springboot.smart.attendance.repository.SysUserRepository;
 import com.soft1851.springboot.smart.attendance.service.SysUserService;
@@ -40,11 +43,29 @@ public class SysUserServiceImpl implements SysUserService {
         UserVo user = (UserVo) DataTypeChange.changeObj(userInfoObj, UserVo.class).get(0);
         // 开始比对密码是否正确
         String password = Md5Util.getMd5(loginDto.getPassword(), true, 32);
+
         if (user.getSysUserPassword().equals(password)) {
             map.put("user", user);
             return map;
         } else {
             throw new CustomException("密码有误", ResultCode.USER_PASSWORD_ERROR);
         }
+
+//        if (userInfo.getSysUserPassword().equals(password)) {
+//            map.put("user", )
+//        }
+
     }
+
+    /**
+     * 老师查询本班学生所有假条
+     */
+    public List<TeacherAuditNoteVo> findAllStudentNote(String userId){
+        //第一步 根据老师id查询班级id
+        Long clazzId = sysUserRepository.findSysClazzIdByPkSysUserIdEquals(userId);
+        //第二步 根据班级id和角色id查询本班级所有学生假条
+        return sysUserRepository.findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(clazzId);
+
+    }
+
 }

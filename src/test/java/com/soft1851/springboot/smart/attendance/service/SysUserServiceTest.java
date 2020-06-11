@@ -1,12 +1,13 @@
 package com.soft1851.springboot.smart.attendance.service;
 
+
 import com.soft1851.springboot.smart.attendance.model.dto.LoginDto;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SysUserServiceTest {
@@ -22,4 +23,9 @@ class SysUserServiceTest {
                 .build();
         System.out.println(sysUserService.login(loginDto));
     }
+
+    void findAllStudentNote() {
+        sysUserService.findAllStudentNote("003").forEach(System.out::println);
+    }
+
 }

@@ -4,8 +4,10 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -40,4 +42,27 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
             "WHERE n.userId = ?1")
     List<StudentNoteVo> findByUserIdEquals(String userId);
 
+    /**
+     * 添加班主任意见
+     */
+    @Transactional
+    @Modifying
+    @Query("UPDATE SysNote n SET n.teacherOpinion = ?2 WHERE n.pkNoteId = ?1 ")
+    int updateTeacherOpinion(Long pkNoteId, String teacherOpinion);
+
+    /**
+     * 添加辅导员意见
+     */
+    @Transactional
+    @Modifying
+    @Query("UPDATE SysNote n SET n.instructorOpinion = ?2 WHERE n.pkNoteId = ?1 ")
+    int updateInstructorOpinion(Long pkNoteId, String instructorOpinion);
+
+    /**
+     * 添加二级学院意见
+     */
+    @Transactional
+    @Modifying
+    @Query("UPDATE SysNote n SET n.academyOpinion = ?2 WHERE n.pkNoteId = ?1 ")
+    int updateAcademyOpinion(Long pkNoteId, String academyOpinion);
 }
