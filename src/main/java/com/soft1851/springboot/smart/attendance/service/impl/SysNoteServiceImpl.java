@@ -1,6 +1,7 @@
 package com.soft1851.springboot.smart.attendance.service.impl;
 
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
+import com.soft1851.springboot.smart.attendance.model.dto.OpinionDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
@@ -60,4 +61,19 @@ public class SysNoteServiceImpl implements SysNoteService {
     public List<StudentNoteVo> findAllStatus(String userId){
         return sysNoteRepository.findByUserIdEquals(userId);
     }
+
+    /**
+     * 老师审核意见
+     */
+    @Override
+    public int updateTeacherOpinoin(OpinionDto opinionDto){
+        if(opinionDto.getRoleId() == 2) {
+            return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+        }else if (opinionDto.getRoleId() == 3) {
+            return sysNoteRepository.updateInstructorOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+        }else {
+            return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+        }
+    }
+
 }

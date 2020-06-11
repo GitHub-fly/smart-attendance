@@ -22,4 +22,13 @@ class SysUserRepositoryTest {
         DataTypeChange.changeObj(userInfoObj, UserVo.class).forEach(System.out::println);
     }
 
+    @Test
+    void findSysClazzIdByPkSysUserIdEquals() {
+        System.out.println(sysUserRepository.findSysClazzIdByPkSysUserIdEquals("003"));
+    }
+
+    @Test
+    void findTeacherAuditNoteVoBySysUserNameAndRoleIdEquals() {
+        sysUserRepository.findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(1L).forEach(System.out::println);
+    }
 }

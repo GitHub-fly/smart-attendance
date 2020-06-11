@@ -41,4 +41,19 @@ public class SysNoteRepositoryTest {
     void findByUserIdEquals() {
         sysNoteRepository.findByUserIdEquals("001").forEach(System.out::println);
     }
+
+    @Test
+    void updateTeacherOpinion() {
+        System.out.println(sysNoteRepository.updateTeacherOpinion(1L, "同意"));
+    }
+
+    @Test
+    void updateInstructorOpinion() {
+        System.out.println(sysNoteRepository.updateInstructorOpinion(1L, "同意"));
+    }
+
+    @Test
+    void updateAcademyOpinion() {
+        System.out.println(sysNoteRepository.updateAcademyOpinion(1L, "同意"));
+    }
 }

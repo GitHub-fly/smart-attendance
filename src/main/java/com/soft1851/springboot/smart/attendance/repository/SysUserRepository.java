@@ -1,6 +1,8 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
 import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
+import com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo;
+import lombok.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -29,5 +31,23 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
             "ON r.pk_role_id = u.role_id\n" +
             "WHERE u.sys_user_phone = ?1", nativeQuery = true)
     List<Object> getUserInfo(String sysUserPhone);
+
+    /**
+     * 老师查看班级学生所有假条
+     */
+    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo(n.pkNoteId, u.sysUserName, u.sysUserAvatar, c.name, n.type, n.status, n.gmtCreate)"
+            + "FROM SysUser u "
+            + "LEFT JOIN SysClazz c "
+            + "ON u.sysClazzId = c.pkSysClazzId "
+            + "LEFT JOIN SysNote n "
+            + "ON u.pkSysUserId = n.userId "
+            + "WHERE u.sysClazzId = ?1 AND u.roleId = 1 ")
+    List<TeacherAuditNoteVo> findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(Long clazzId);
+
+    /**
+     * 根据老师id查询班级id
+     */
+    @Query(value = "SELECT sysClazzId FROM SysUser WHERE pkSysUserId = ?1")
+    Long findSysClazzIdByPkSysUserIdEquals(String userId);
 
 }
