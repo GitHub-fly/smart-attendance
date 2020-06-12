@@ -4,6 +4,8 @@ import cn.hutool.core.date.DateUtil;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.model.dto.AttendanceDto;
+import com.soft1851.springboot.smart.attendance.model.entity.SysDormitory;
+import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
 import com.soft1851.springboot.smart.attendance.service.SysAttendanceService;
 import com.soft1851.springboot.smart.attendance.util.TimeUtil;
@@ -52,23 +54,23 @@ public class SysAttendanceController {
     }
 
     @PostMapping("/manager/info")
-    public List<EntityVo> queryCheckInfo(@RequestParam("managerId") String managerId) {
-        return attendanceService.queryCheckInfo(managerId);
+    public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
+        return attendanceService.queryCheckInfo(sysUser.getPkSysUserId());
     }
 
     @PostMapping("/info/number")
-    public List<EntityVo> queryStuCheckInfo(@RequestParam("dormitoryId") Long managerId) {
-        return attendanceService.queryStuCheckInfo(managerId);
+    public List<EntityVo> queryStuCheckInfo(@RequestBody SysDormitory sysDormitory) {
+        return attendanceService.queryStuCheckInfo(sysDormitory.getPkSysDormitoryId());
     }
 
     @PostMapping("/info/not")
-    public List<EntityVo> queryUnStuCheckInfo(@RequestParam("managerId") String managerId) {
-        return attendanceService.queryUnCheckInfo(managerId);
+    public List<EntityVo> queryUnStuCheckInfo(@RequestBody SysUser sysUser) {
+        return attendanceService.queryUnCheckInfo(sysUser.getPkSysUserId());
     }
 
     @PostMapping("/user/info")
-    public EntityVo queryStuInfo(@RequestParam("pkUserId") String pkUserId) {
-        return attendanceService.queryStuInfo(pkUserId).get(0);
+    public EntityVo queryStuInfo(@RequestBody SysUser sysUser) {
+        return attendanceService.queryStuInfo(sysUser.getPkSysUserId()).get(0);
     }
 
 }
