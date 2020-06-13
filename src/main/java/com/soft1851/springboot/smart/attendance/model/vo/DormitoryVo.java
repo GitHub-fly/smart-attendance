@@ -38,6 +38,11 @@ public class DormitoryVo implements EntityVo {
      */
     private String teacherPhone;
 
+    /**
+     * 班级名
+     */
+    private String clazzName;
+
 //    /**
 //     * 是否全部打卡
 //     */
