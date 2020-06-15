@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StudentVo implements EntityVo {
 
+    private String sysUserAvatar;
+
     /**
      * 学生真实姓名
      */
