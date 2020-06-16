@@ -37,4 +37,13 @@ public interface SysAttendanceRepository extends JpaRepository<SysAttendance, Lo
             "RIGHT JOIN sys_dormitory d ON d.pk_sys_dormitory_id=ds.dormitory_id " +
             "WHERE u.pk_sys_user_id=?1", nativeQuery = true)
     List<Object> queryStuInfo(String userId);
+
+    /**
+     * 班主任id查班级所有学生打卡情况
+     * @param teacherId
+     * @return
+     */
+    @Query(value = "SELECT u.pk_sys_user_id, u.sys_user_avatar, u.sys_user_name, u.sys_user_phone, u.is_attendance FROM sys_user u " +
+            "WHERE u.sys_clazz_id IN (SELECT sys_user.sys_clazz_id FROM sys_user WHERE pk_sys_user_id=?1 AND role_id=2) AND u.role_id=1", nativeQuery = true)
+    List<Object> queryClassCheckIn(String teacherId);
 }

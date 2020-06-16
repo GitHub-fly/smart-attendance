@@ -52,4 +52,11 @@ public interface SysAttendanceService {
      */
     List<EntityVo> queryStuInfo(String studentId);
 
+    /**
+     * 根据老师id查询所有学生打卡情况
+     * @param teacherId
+     * @return
+     */
+    List<EntityVo> queryClassInfo(String teacherId);
+
 }

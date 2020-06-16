@@ -115,4 +115,11 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
         return entityVos;
     }
 
+    @Override
+    public List<EntityVo> queryClassInfo(String teacherId) {
+        List<Object> objects = attendanceRepository.queryClassCheckIn(teacherId);
+        List<EntityVo> entityVos = DataTypeChange.changeObj(objects, ClassStudentVo.class);
+        return entityVos;
+    }
+
 }
