@@ -1,9 +1,6 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
-import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
-import com.soft1851.springboot.smart.attendance.model.vo.StuCheckInVo;
-import com.soft1851.springboot.smart.attendance.model.vo.StuUnCheckVo;
-import com.soft1851.springboot.smart.attendance.model.vo.StudentVo;
+import com.soft1851.springboot.smart.attendance.model.vo.*;
 import com.soft1851.springboot.smart.attendance.util.DataTypeChange;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,4 +34,12 @@ class SysAttendanceRepositoryTest {
         List<EntityVo> entityVos = DataTypeChange.changeObj(objects, StudentVo.class);
         entityVos.forEach(System.out::println);
     }
+
+    @Test
+    void queryClassCheckIn() {
+        List<Object> objects = attendanceRepository.queryClassCheckIn("003");
+        List<EntityVo> entityVos = DataTypeChange.changeObj(objects, ClassStudentVo.class);
+        entityVos.forEach(System.out::println);
+    }
+
 }

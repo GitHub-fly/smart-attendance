@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.soft1851.springboot.smart.attendance.SmartAttendanceAppl
+ ication
+

@@ -3,6 +3,7 @@ package com.soft1851.springboot.smart.attendance.controller;
 import cn.hutool.core.date.DateUtil;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
+import com.soft1851.springboot.smart.attendance.exception.CustomException;
 import com.soft1851.springboot.smart.attendance.model.dto.AttendanceDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysDormitory;
 import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
@@ -55,7 +56,17 @@ public class SysAttendanceController {
 
     @PostMapping("/manager/info")
     public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
-        return attendanceService.queryCheckInfo(sysUser.getPkSysUserId());
+        // 当角色是宿管阿姨，执行宿管对应的业务逻辑
+        if (sysUser.getRoleId() == 5) {
+            return attendanceService.queryCheckInfo(sysUser.getPkSysUserId());
+        }
+        // 当角色是班主任
+        if (sysUser.getRoleId() == 2) {
+            return attendanceService.queryClassInfo(sysUser.getPkSysUserId());
+        }
+        else {
+            throw new CustomException("用户权限不足", ResultCode.USER_NO_AUTH);
+        }
     }
 
     @PostMapping("/info/number")
