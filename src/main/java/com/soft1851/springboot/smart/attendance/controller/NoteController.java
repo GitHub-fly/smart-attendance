@@ -32,7 +32,7 @@ public class NoteController {
 
     @PostMapping("/increase")
     public NoteIdVo getPkNoteId(@RequestBody NoteDto noteDto) {
-        return sysNoteService.findNoteId(noteDto);
+        return sysNoteService.insertByNoteId(noteDto);
     }
 
 

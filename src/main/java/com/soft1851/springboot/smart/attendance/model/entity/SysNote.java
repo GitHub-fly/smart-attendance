@@ -44,7 +44,7 @@ public class SysNote {
     /**
      * 预留手机号
      */
-    @Column(name = "user_phone", length = 30, nullable = false)
+    @Column(name = "user_phone", length = 30, nullable = false, columnDefinition = "")
     private String userPhone;
 
     /**
@@ -90,26 +90,26 @@ public class SysNote {
     /**
      * 请假原因
      */
-    @Column(name = "reason", nullable = false)
+    @Column(name = "reason", nullable = false, columnDefinition = "")
     private String reason;
 
     /**
      * 班主任意见  同意或者不同意
      */
-    @Column(name = "teacher_opinion", length = 255)
+    @Column(name = "teacher_opinion", length = 255, columnDefinition = "")
     private String teacherOpinion;
 
     /**
      * 辅导员意见  同意或者不同意
      */
-    @Column(name = "instructor_opinion", length = 255)
+    @Column(name = "instructor_opinion", length = 255, columnDefinition = "")
     private String instructorOpinion;
 
     /**
      * 二级学院意见
      * 同意或者不同意
      */
-    @Column(name = "academy_opinion", length = 255)
+    @Column(name = "academy_opinion", length = 255, columnDefinition = "")
     private String academyOpinion;
 
     /**

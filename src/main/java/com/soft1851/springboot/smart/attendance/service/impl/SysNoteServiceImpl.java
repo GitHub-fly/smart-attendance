@@ -11,6 +11,8 @@ import com.soft1851.springboot.smart.attendance.service.SysNoteService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,7 +29,7 @@ public class SysNoteServiceImpl implements SysNoteService {
     private SysNoteRepository sysNoteRepository;
 
     @Override
-    public NoteIdVo findNoteId(NoteDto noteDto) {
+    public NoteIdVo insertByNoteId(NoteDto noteDto) {
         SysNote sysNote = SysNote.builder()
                 .userId(noteDto.getUserId())
                 .type(noteDto.getType())
@@ -37,6 +39,8 @@ public class SysNoteServiceImpl implements SysNoteService {
                 .isSchool(noteDto.getIsSchool())
                 .startTime(noteDto.getStartTime())
                 .finishTime(noteDto.getFinishTime())
+                .gmtCreate(Timestamp.valueOf(LocalDateTime.now()))
+                .gmtModified(Timestamp.valueOf(LocalDateTime.now()))
                 .reason(noteDto.getReason())
                 .build();
 

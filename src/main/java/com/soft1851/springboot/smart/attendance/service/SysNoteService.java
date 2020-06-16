@@ -19,12 +19,12 @@ import java.util.List;
 public interface SysNoteService {
 
     /**
-     * 返回假条id
+     * 插入假条信息
      *
      * @param noteDto
      * @return
      */
-    NoteIdVo findNoteId(NoteDto noteDto);
+    NoteIdVo insertByNoteId(NoteDto noteDto);
 
     /**
      * 返回假条id
