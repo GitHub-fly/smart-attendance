@@ -22,8 +22,8 @@ public class FilterConfig {
     public FilterRegistrationBean<EncryptionFilter> filterRegistration() {
         EncryptionConfig config = new EncryptionConfig();
         config.setKey("abcdef0123456789");
-        config.setRequestDecyptUriList(Arrays.asList("/save", "/decryptEntityXml"));
-        config.setResponseEncryptUriList(Arrays.asList("/api/attendance/manager/info", "/encryptEntity", "/save", "/encryptEntityXml", "/decryptEntityXml"));
+        config.setRequestDecyptUriList(Arrays.asList("/api/attendance/manager/info"));
+        config.setResponseEncryptUriList(Arrays.asList("/api/attendance/manager/info"));
         FilterRegistrationBean<EncryptionFilter> registration = new FilterRegistrationBean<EncryptionFilter>();
         registration.setFilter(new EncryptionFilter(config));
         registration.addUrlPatterns("/*");
