@@ -36,3 +36,6 @@ spring:
         max-active: 8
         max-wait: 1ms
       shutdown-timeout: 100ms
+
+  encrypt:
+    key: abcdef0123456789

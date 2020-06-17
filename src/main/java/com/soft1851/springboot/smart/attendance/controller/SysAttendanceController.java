@@ -1,6 +1,8 @@
 package com.soft1851.springboot.smart.attendance.controller;
 
 import cn.hutool.core.date.DateUtil;
+import com.cxytiandi.encrypt.springboot.annotation.Decrypt;
+import com.cxytiandi.encrypt.springboot.annotation.Encrypt;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.exception.CustomException;
@@ -54,6 +56,7 @@ public class SysAttendanceController {
         return attendanceService.checkIn(attendanceDto);
     }
 
+    @Encrypt
     @PostMapping("/manager/info")
     public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
         // 当角色是宿管阿姨，执行宿管对应的业务逻辑
