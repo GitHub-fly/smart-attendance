@@ -6,7 +6,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
 
 /**
  * @author Zeng
@@ -20,16 +19,16 @@ public class FilterConfig {
 
     @Bean
     public FilterRegistrationBean<EncryptionFilter> filterRegistration() {
-        EncryptionConfig config = new EncryptionConfig();
-        config.setKey("abcdef0123456789");
-        config.setRequestDecyptUriList(Arrays.asList("/api/attendance/manager/info"));
-        config.setResponseEncryptUriList(Arrays.asList("/api/attendance/manager/info"));
-        FilterRegistrationBean<EncryptionFilter> registration = new FilterRegistrationBean<EncryptionFilter>();
-        registration.setFilter(new EncryptionFilter(config));
-        registration.addUrlPatterns("/*");
-        registration.setName("EncryptionFilter");
-        registration.setOrder(1);
-        return registration;
+            EncryptionConfig config = new EncryptionConfig();
+            config.setKey("5F9AC4530C2A9C6D");
+//        config.setRequestDecyptUriList(Arrays.asList("/*"));
+//        config.setResponseEncryptUriList(Arrays.asList("/*"));
+            FilterRegistrationBean<EncryptionFilter> registration = new FilterRegistrationBean<EncryptionFilter>();
+            registration.setFilter(new EncryptionFilter(config));
+            registration.addUrlPatterns("/*");
+            registration.setName("EncryptionFilter");
+            registration.setOrder(1);
+            return registration;
     }
 
 }

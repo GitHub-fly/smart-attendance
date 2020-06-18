@@ -38,7 +38,7 @@ public class CorsConfig {
         List<String> allowedHeaders = Arrays.asList(requestHeaders);
         config.setAllowedHeaders(allowedHeaders);
         //允许的响应头列表
-        String[] responseHeaders = {"Access-Control-Expose-Headers","Verify", "Authorization"};
+        String[] responseHeaders = {"Access-Control-Expose-Headers","Verify", "Content-Type", "Authorization", "Access-Control-Allow-Origin"};
         List<String> allowedExposedHeaders = Arrays.asList(responseHeaders);
         config.setExposedHeaders(allowedExposedHeaders);
         source.registerCorsConfiguration("/**", config);
