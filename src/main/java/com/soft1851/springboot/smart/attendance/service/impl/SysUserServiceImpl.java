@@ -60,6 +60,7 @@ public class SysUserServiceImpl implements SysUserService {
     /**
      * 老师查询本班学生所有假条
      */
+    @Override
     public List<TeacherAuditNoteVo> findAllStudentNote(String userId){
         //第一步 根据老师id查询班级id
         Long clazzId = sysUserRepository.findSysClazzIdByPkSysUserIdEquals(userId);
