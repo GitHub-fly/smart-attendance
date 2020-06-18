@@ -23,7 +23,7 @@ public enum ResultCode {
     BOUND_STATEMENT_NOT_FOUND(10008, "Mybatis未绑定"),
     CONNECTION_ERROR(10009, "网络连接错误"),
     ARITHMETIC_ERROR(100010,"计算错误"),
-
+    ENCRYPT_WRONG(100011, "数据解密异常"),
 
     /* 用户错误：20001-29999*/
     USER_NOT_SIGN_IN(20001, "请先登录"),
