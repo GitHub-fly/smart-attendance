@@ -16,14 +16,6 @@ public class SmartAttendanceApplication {
         SpringApplication.run(SmartAttendanceApplication.class, args);
     }
 
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
 
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
 }
