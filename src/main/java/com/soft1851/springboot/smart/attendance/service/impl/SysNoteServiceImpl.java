@@ -6,6 +6,8 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
+import com.soft1851.springboot.smart.attendance.model.vo.TeacherVo;
+import com.soft1851.springboot.smart.attendance.repository.SysClazzRepository;
 import com.soft1851.springboot.smart.attendance.repository.SysNoteRepository;
 import com.soft1851.springboot.smart.attendance.service.SysNoteService;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author ke
@@ -27,6 +29,8 @@ public class SysNoteServiceImpl implements SysNoteService {
 
     @Resource
     private SysNoteRepository sysNoteRepository;
+    @Resource
+    private SysClazzRepository sysClazzRepository;
 
     @Override
     public NoteIdVo insertByNoteId(NoteDto noteDto) {
@@ -80,4 +84,25 @@ public class SysNoteServiceImpl implements SysNoteService {
         }
     }
 
+    /**
+     * 根据辅导员id查班级请假情况
+     * @param instructorId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> findTeacherVo(String instructorId){
+        List<TeacherVo> teacherVos = sysClazzRepository.findTeacherVoByInstructorId(instructorId);
+        System.out.println("正常");
+        List<Map<String, Object>> getTeacherList = new ArrayList<Map<String, Object>>() ;
+        teacherVos.forEach(teacherVo -> {
+            Map<String, Object> map = new HashMap<>();
+            System.out.println(teacherVo.getName());
+            List<Integer> getStatus = sysNoteRepository.findStatusByClazzName(teacherVo.getName());
+            System.out.println(teacherVo.getName()+"所管理班级请假状态"+getStatus);
+            map.put("status", getStatus);
+            map.put("teacher", teacherVo);
+            getTeacherList.add(map);
+        });
+        return getTeacherList;
+    }
 }

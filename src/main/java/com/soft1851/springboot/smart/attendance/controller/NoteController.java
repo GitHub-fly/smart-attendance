@@ -3,6 +3,7 @@ package com.soft1851.springboot.smart.attendance.controller;
 import com.soft1851.springboot.smart.attendance.model.dto.NoteDto;
 import com.soft1851.springboot.smart.attendance.model.dto.OpinionDto;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
+import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ke
@@ -61,5 +63,13 @@ public class NoteController {
     @PostMapping("teacher/advice")
     public int updateNoteOpinoin(@RequestBody OpinionDto opinionDto) {
         return sysNoteService.updateTeacherOpinoin(opinionDto);
+    }
+
+    /**
+     * 辅导员查看各班级请假情况
+     */
+    @PostMapping("insturctor/all")
+    public List<Map<String, Object>> getAllClazzNote(@RequestBody SysUser sysUser) {
+        return sysNoteService.findTeacherVo(sysUser.getPkSysUserId());
     }
 }

@@ -6,8 +6,10 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteIdVo;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
+import com.soft1851.springboot.smart.attendance.model.vo.TeacherVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ke
@@ -46,4 +48,10 @@ public interface SysNoteService {
      * 老师审核意见
      */
     int updateTeacherOpinoin(OpinionDto opinionDto);
+
+    /**
+     * 根据辅导员id查班级假条状态
+     * @return
+     */
+    List<Map<String, Object>> findTeacherVo(String instructorId);
 }
