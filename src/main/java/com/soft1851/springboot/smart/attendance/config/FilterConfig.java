@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2020/6/16
  * @Version 1.0
  **/
-//@Configuration
+@Configuration
 public class FilterConfig {
 
     @Bean
