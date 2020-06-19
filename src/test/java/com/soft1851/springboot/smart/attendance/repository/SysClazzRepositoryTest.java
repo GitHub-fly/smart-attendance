@@ -17,4 +17,9 @@ class SysClazzRepositoryTest {
     void findTeacherVoByInstructorId() {
         sysClazzRepository.findTeacherVoByInstructorId("004").forEach(System.out::println);
     }
+
+    @Test
+    void findByNameEquals() {
+        sysClazzRepository.findByNameEquals("软件1821").forEach(System.out::println);
+    }
 }

@@ -1,5 +1,6 @@
 package com.soft1851.springboot.smart.attendance.controller;
 
+import com.soft1851.springboot.smart.attendance.annotation.ControllerWebLog;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.model.dto.LoginDto;
@@ -33,6 +34,7 @@ public class SysUserController {
      * @return
      */
     @PostMapping("/login")
+    @ControllerWebLog(name = "login", isSaved = true)
     public Map<String, Object> login(@RequestBody LoginDto loginDto) {
         return sysUserService.login(loginDto);
     }
