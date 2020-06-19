@@ -45,7 +45,6 @@ public class SysUserServiceImpl implements SysUserService {
         UserVo user = (UserVo) DataTypeChange.changeObj(userInfoObj, UserVo.class).get(0);
         // 开始比对密码是否正确
         String password = Md5Util.getMd5(loginDto.getPassword(), true, 32);
-
         if (user.getSysUserPassword().equals(password)) {
             user.setSysUserPassword(null);
             List<EntityVo> menuList = DataTypeChange.changeObj(sysUserRepository.getMenuUserId(user.getPkSysUserId()), MenuVo.class);

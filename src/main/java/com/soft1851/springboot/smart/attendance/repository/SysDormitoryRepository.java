@@ -37,7 +37,7 @@ public interface SysDormitoryRepository extends JpaRepository<SysDormitory, Long
             "FROM sys_dormitory d " +
             "LEFT JOIN dormitory_student ds ON d.pk_sys_dormitory_id=ds.dormitory_id " +
             "LEFT JOIN sys_user u ON u.pk_sys_user_id=ds.user_id " +
-            "WHERE d.pk_sys_dormitory_id=?1 ", nativeQuery = true)
+            "WHERE d.pk_sys_dormitory_id=?1 ORDER BY ds.bed_number", nativeQuery = true)
     List<Object> findStuCheckInfo(Long dormitoryId);
 
 }
