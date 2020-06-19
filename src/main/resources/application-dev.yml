@@ -39,3 +39,4 @@ spring:
 
   encrypt:
     key: abcdef0123456789
+
