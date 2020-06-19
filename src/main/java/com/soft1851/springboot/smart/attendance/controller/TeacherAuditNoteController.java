@@ -1,5 +1,6 @@
 package com.soft1851.springboot.smart.attendance.controller;
 
+import com.soft1851.springboot.smart.attendance.annotation.ControllerWebLog;
 import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo;
 import com.soft1851.springboot.smart.attendance.service.SysUserService;
@@ -26,6 +27,7 @@ public class TeacherAuditNoteController {
     private SysUserService sysUserService;
 
     @PostMapping("teacher/all")
+    @ControllerWebLog(name = "getStudentAllNote", isSaved = true)
     public List<TeacherAuditNoteVo> getStudentAllNote(@RequestBody SysUser sysUser) {
         return sysUserService.findAllStudentNote(sysUser.getPkSysUserId());
 

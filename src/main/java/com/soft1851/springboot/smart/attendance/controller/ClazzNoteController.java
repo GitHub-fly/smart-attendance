@@ -1,5 +1,6 @@
 package com.soft1851.springboot.smart.attendance.controller;
 
+import com.soft1851.springboot.smart.attendance.annotation.ControllerWebLog;
 import com.soft1851.springboot.smart.attendance.model.entity.SysClazz;
 import com.soft1851.springboot.smart.attendance.model.vo.ClazzNoteVo;
 import com.soft1851.springboot.smart.attendance.service.SysClazzService;
@@ -30,6 +31,7 @@ public class ClazzNoteController {
      *  根据班级名称查询学生信息和假条状态
      */
     @PostMapping("clazz/noteAll")
+    @ControllerWebLog(name = "getClazzNote", isSaved = true)
     public List<ClazzNoteVo> getClazzNote(@RequestBody SysClazz sysClazz) {
         return sysClazzService.findClazzNote(sysClazz.getName());
     }

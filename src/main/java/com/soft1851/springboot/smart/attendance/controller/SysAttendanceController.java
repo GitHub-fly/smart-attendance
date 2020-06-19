@@ -3,6 +3,7 @@ package com.soft1851.springboot.smart.attendance.controller;
 import cn.hutool.core.date.DateUtil;
 import com.cxytiandi.encrypt.springboot.annotation.Decrypt;
 import com.cxytiandi.encrypt.springboot.annotation.Encrypt;
+import com.soft1851.springboot.smart.attendance.annotation.ControllerWebLog;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.exception.CustomException;
@@ -48,6 +49,7 @@ public class SysAttendanceController {
     private SysAttendanceService attendanceService;
 
     @PostMapping("/increase")
+    @ControllerWebLog(name = "checkIn", isSaved = true)
     public ResponseResult checkIn(@RequestBody AttendanceDto attendanceDto) {
         // 判断当前时间是否在打卡时间段内
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
@@ -58,6 +60,7 @@ public class SysAttendanceController {
 
     @Encrypt
     @PostMapping("/manager/info")
+    @ControllerWebLog(name = "queryCheckInfo", isSaved = true)
     public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
         // 当角色是宿管阿姨，执行宿管对应的业务逻辑
         if (sysUser.getRoleId() == 5) {
@@ -73,16 +76,19 @@ public class SysAttendanceController {
     }
 
     @PostMapping("/info/number")
+    @ControllerWebLog(name = "queryStuCheckInfo", isSaved = true)
     public List<EntityVo> queryStuCheckInfo(@RequestBody SysDormitory sysDormitory) {
         return attendanceService.queryStuCheckInfo(sysDormitory.getPkSysDormitoryId());
     }
 
     @PostMapping("/info/not")
+    @ControllerWebLog(name = "queryUnStuCheckInfo",isSaved = true)
     public List<EntityVo> queryUnStuCheckInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryUnCheckInfo(sysUser.getPkSysUserId());
     }
 
     @PostMapping("/user/info")
+    @ControllerWebLog(name = "queryStuInfo", isSaved = true)
     public EntityVo queryStuInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryStuInfo(sysUser.getPkSysUserId()).get(0);
     }
