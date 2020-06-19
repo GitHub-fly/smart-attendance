@@ -4,7 +4,9 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo;
 import lombok.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -50,4 +52,12 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
     @Query(value = "SELECT sysClazzId FROM SysUser WHERE pkSysUserId = ?1")
     Long findSysClazzIdByPkSysUserIdEquals(String userId);
 
+    /**
+     * 每日重置学生打卡字段为0
+     * @return
+     */
+    @Modifying
+    @Transactional(rollbackFor = RuntimeException.class)
+    @Query(value = "UPDATE SysUser c SET c.isAttendance = 0 WHERE c.roleId = 1 " )
+    int updateIsAttendance();
 }

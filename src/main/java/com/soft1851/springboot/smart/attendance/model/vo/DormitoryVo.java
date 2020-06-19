@@ -43,9 +43,9 @@ public class DormitoryVo implements EntityVo {
      */
     private String clazzName;
 
-//    /**
-//     * 是否全部打卡
-//     */
-//    private Boolean isAll;
+    /**
+     * 是否全部打卡
+     */
+    private Boolean isAll;
 
 }

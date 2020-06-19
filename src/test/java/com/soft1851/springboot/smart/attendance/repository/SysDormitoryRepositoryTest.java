@@ -33,7 +33,7 @@ class SysDormitoryRepositoryTest {
     @Test
     void findStuCheckInfo() {
 
-        List<Object> objects = sysDormitoryRepository.findStuCheckInfo(2L);
+        List<Object> objects = sysDormitoryRepository.findStuCheckInfo(1L);
         List<EntityVo> entityVos = DataTypeChange.changeObj(objects, StuCheckInVo.class);
         entityVos.forEach(System.out::println);
     }

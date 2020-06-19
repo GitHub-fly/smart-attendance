@@ -12,6 +12,7 @@ import com.soft1851.springboot.smart.attendance.model.entity.SysUser;
 import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
 import com.soft1851.springboot.smart.attendance.service.SysAttendanceService;
 import com.soft1851.springboot.smart.attendance.util.TimeUtil;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -48,6 +49,7 @@ public class SysAttendanceController {
     private SysAttendanceService attendanceService;
 
     @PostMapping("/increase")
+    @ApiOperation(value = "新增打卡", notes = "")
     public ResponseResult checkIn(@RequestBody AttendanceDto attendanceDto) {
         // 判断当前时间是否在打卡时间段内
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
@@ -56,8 +58,8 @@ public class SysAttendanceController {
         return attendanceService.checkIn(attendanceDto);
     }
 
-    @Encrypt
     @PostMapping("/manager/info")
+    @ApiOperation(value = "管理员查看打卡信息", notes = "")
     public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
         // 当角色是宿管阿姨，执行宿管对应的业务逻辑
         if (sysUser.getRoleId() == 5) {
@@ -73,16 +75,19 @@ public class SysAttendanceController {
     }
 
     @PostMapping("/info/number")
+    @ApiOperation(value = "通过宿舍id查询成员打卡详情", notes = "")
     public List<EntityVo> queryStuCheckInfo(@RequestBody SysDormitory sysDormitory) {
         return attendanceService.queryStuCheckInfo(sysDormitory.getPkSysDormitoryId());
     }
 
     @PostMapping("/info/not")
+    @ApiOperation(value = "管理员查看未打卡学生信息", notes = "")
     public List<EntityVo> queryUnStuCheckInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryUnCheckInfo(sysUser.getPkSysUserId());
     }
 
     @PostMapping("/user/info")
+    @ApiOperation(value = "查询学生打卡详情", notes = "")
     public EntityVo queryStuInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryStuInfo(sysUser.getPkSysUserId()).get(0);
     }
