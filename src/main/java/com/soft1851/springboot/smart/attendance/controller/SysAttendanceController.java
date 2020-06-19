@@ -3,6 +3,7 @@ package com.soft1851.springboot.smart.attendance.controller;
 import cn.hutool.core.date.DateUtil;
 import com.cxytiandi.encrypt.springboot.annotation.Decrypt;
 import com.cxytiandi.encrypt.springboot.annotation.Encrypt;
+import com.soft1851.springboot.smart.attendance.annotation.ControllerWebLog;
 import com.soft1851.springboot.smart.attendance.constant.ResponseResult;
 import com.soft1851.springboot.smart.attendance.constant.ResultCode;
 import com.soft1851.springboot.smart.attendance.exception.CustomException;
@@ -50,6 +51,7 @@ public class SysAttendanceController {
 
     @PostMapping("/increase")
     @ApiOperation(value = "新增打卡", notes = "")
+    @ControllerWebLog(name = "checkIn", isSaved = true)
     public ResponseResult checkIn(@RequestBody AttendanceDto attendanceDto) {
         // 判断当前时间是否在打卡时间段内
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
@@ -60,6 +62,7 @@ public class SysAttendanceController {
 
     @PostMapping("/manager/info")
     @ApiOperation(value = "管理员查看打卡信息", notes = "")
+    @ControllerWebLog(name = "queryCheckInfo", isSaved = true)
     public List<EntityVo> queryCheckInfo(@RequestBody SysUser sysUser) {
         // 当角色是宿管阿姨，执行宿管对应的业务逻辑
         if (sysUser.getRoleId() == 5) {
@@ -76,18 +79,21 @@ public class SysAttendanceController {
 
     @PostMapping("/info/number")
     @ApiOperation(value = "通过宿舍id查询成员打卡详情", notes = "")
+    @ControllerWebLog(name = "queryStuCheckInfo", isSaved = true)
     public List<EntityVo> queryStuCheckInfo(@RequestBody SysDormitory sysDormitory) {
         return attendanceService.queryStuCheckInfo(sysDormitory.getPkSysDormitoryId());
     }
 
     @PostMapping("/info/not")
     @ApiOperation(value = "管理员查看未打卡学生信息", notes = "")
+    @ControllerWebLog(name = "queryUnStuCheckInfo",isSaved = true)
     public List<EntityVo> queryUnStuCheckInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryUnCheckInfo(sysUser.getPkSysUserId());
     }
 
     @PostMapping("/user/info")
     @ApiOperation(value = "查询学生打卡详情", notes = "")
+    @ControllerWebLog(name = "queryStuInfo", isSaved = true)
     public EntityVo queryStuInfo(@RequestBody SysUser sysUser) {
         return attendanceService.queryStuInfo(sysUser.getPkSysUserId()).get(0);
     }

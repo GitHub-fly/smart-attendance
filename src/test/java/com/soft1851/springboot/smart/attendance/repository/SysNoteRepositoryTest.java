@@ -23,6 +23,7 @@ public class SysNoteRepositoryTest {
                 .dayCount(2)
                 .isDormitory(1)
                 .isSchool(0)
+                .status(2)
                 .startTime(new Timestamp(System.currentTimeMillis()))
                 .finishTime(new Timestamp(System.currentTimeMillis()))
                 .reason("我今天不舒服")
@@ -55,5 +56,10 @@ public class SysNoteRepositoryTest {
     @Test
     void updateAcademyOpinion() {
         System.out.println(sysNoteRepository.updateAcademyOpinion(1L, "同意"));
+    }
+
+    @Test
+    void findStatusByClazzName() {
+        sysNoteRepository.findStatusByClazzName("软件1851").forEach(System.out::println);
     }
 }

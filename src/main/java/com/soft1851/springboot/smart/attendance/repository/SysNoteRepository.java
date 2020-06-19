@@ -65,4 +65,15 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
     @Modifying
     @Query("UPDATE SysNote n SET n.academyOpinion = ?2 WHERE n.pkNoteId = ?1 ")
     int updateAcademyOpinion(Long pkNoteId, String academyOpinion);
+
+    /**
+     * 根据班级名称查班级假条状态
+     */
+    @Query("SELECT n.status FROM SysNote n " +
+            "LEFT JOIN SysUser u " +
+            "ON u.pkSysUserId = n.userId "
+            + "LEFT JOIN SysClazz c "
+            + "ON c.pkSysClazzId = u.sysClazzId "
+            + "WHERE c.name = ?1 ")
+    List<Integer> findStatusByClazzName(String clazzName);
 }

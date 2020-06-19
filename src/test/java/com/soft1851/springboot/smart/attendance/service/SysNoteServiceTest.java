@@ -17,4 +17,8 @@ public class SysNoteServiceTest {
         System.out.println(sysNoteService.findNote(1L));
     }
 
+    @Test
+    void findTeacherVo() {
+        sysNoteService.findTeacherVo("004").forEach(System.out::println);
+    }
 }
