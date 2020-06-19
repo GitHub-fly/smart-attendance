@@ -37,7 +37,7 @@ public class SysAttendanceController {
     /**
      * 打卡开始和结束时间
      */
-    String starTime = now + " 13:00:00";
+    String starTime = now + " 00:00:00";
     String endTime = now + " 22:00:00";
 
     private Date start = DateUtil.parse(starTime, "yyyy-MM-dd HH:mm:ss");

@@ -31,4 +31,9 @@ class SysUserRepositoryTest {
     void findTeacherAuditNoteVoBySysUserNameAndRoleIdEquals() {
         sysUserRepository.findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(1L).forEach(System.out::println);
     }
+
+    @Test
+    void getMenuUserId() {
+        System.out.println(sysUserRepository.getMenuUserId("2"));
+    }
 }
