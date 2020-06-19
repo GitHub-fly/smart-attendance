@@ -45,6 +45,7 @@ public class SysUserServiceImpl implements SysUserService {
         String password = Md5Util.getMd5(loginDto.getPassword(), true, 32);
 
         if (user.getSysUserPassword().equals(password)) {
+            user.setSysUserPassword(null);
             map.put("user", user);
             return map;
         } else {

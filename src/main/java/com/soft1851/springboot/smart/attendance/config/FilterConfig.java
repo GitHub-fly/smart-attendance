@@ -2,9 +2,11 @@ package com.soft1851.springboot.smart.attendance.config;
 
 import com.cxytiandi.encrypt.core.EncryptionConfig;
 import com.cxytiandi.encrypt.core.EncryptionFilter;
+import com.soft1851.springboot.smart.attendance.exception.CustomException;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 /**
@@ -17,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
 
+    @ExceptionHandler(value = CustomException.class)
     @Bean
     public FilterRegistrationBean<EncryptionFilter> filterRegistration() {
             EncryptionConfig config = new EncryptionConfig();
