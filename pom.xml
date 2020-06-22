@@ -191,25 +191,22 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.1</version>
         </dependency>
-
+        <!-- 接口加密 -->
+        <dependency>
+            <groupId>com.cxytiandi</groupId>
+            <artifactId>monkey-api-encrypt-core</artifactId>
+            <version>1.2.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
-
-        <!-- rabbitmq-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-reactor-netty</artifactId>-->
 <!--        </dependency>-->
-
 
         <dependency>
             <groupId>commons-lang</groupId>
@@ -222,7 +219,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-
 
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -239,24 +235,7 @@
             <artifactId>reactor-netty</artifactId>
             <version>0.8.11.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>monkey-api-encrypt-core</artifactId>
-            <version>1.2.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.cxytiandi</groupId>
-            <artifactId>monkey-api-encrypt-core</artifactId>
-            <version>1.2.RELEASE</version>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
@@ -269,6 +248,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--maven打包跳过单元测试-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>

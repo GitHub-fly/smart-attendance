@@ -14,6 +14,7 @@ import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
 import com.soft1851.springboot.smart.attendance.service.SysAttendanceService;
 import com.soft1851.springboot.smart.attendance.util.TimeUtil;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/api/attendance")
+@Slf4j
 public class SysAttendanceController {
 
     /**
@@ -53,6 +55,7 @@ public class SysAttendanceController {
     @ApiOperation(value = "新增打卡", notes = "")
     @ControllerWebLog(name = "checkIn", isSaved = true)
     public ResponseResult checkIn(@RequestBody AttendanceDto attendanceDto) {
+        log.info(DateUtil.now());
         // 判断当前时间是否在打卡时间段内
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
             return ResponseResult.failure(ResultCode.ATTENDANCE_TIME_OUT);
