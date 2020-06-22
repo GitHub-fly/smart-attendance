@@ -1,10 +1,13 @@
 package com.soft1851.springboot.smart.attendance.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -14,36 +17,49 @@ import java.sql.Timestamp;
  * @Date 2020/6/22
  * @Version 1.0
  **/
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
 public class SysMsg {
 
     /**
      * 消息id
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_message_id", nullable = false)
     private Long pkMessageId;
 
     /**
      * 消息标题
      */
+    @Column(name = "title", length = 32, nullable = false)
     private String title;
 
     /**
      * 消息内容
      */
+    @Column(name = "content", length = 254, nullable = false)
     private String content;
 
     /**
      * 是否已读
      */
+    @Column(name = "is_read", length = 4, nullable = false)
     private Integer isRead;
 
     /**
      * 发起人id
      */
+    @Column(name = "from_id", length = 32, nullable = false)
     private String fromId;
 
     /**
      * 接受人id
      */
+    @Column(name = "to_id", length = 32, nullable = false)
     private String toId;
 
     /**
