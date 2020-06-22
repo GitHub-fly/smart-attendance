@@ -46,6 +46,6 @@ import java.util.List;
            "ON n.userId = u.pkSysUserId " +
            "LEFT JOIN SysClazz c " +
            "ON c.pkSysClazzId = u.sysClazzId " +
-           "WHERE c.name = ?1")
+           "WHERE c.name = ?1 AND n.status = 1")
    List<ClazzNoteVo> findByNameEquals(String name);
 }
