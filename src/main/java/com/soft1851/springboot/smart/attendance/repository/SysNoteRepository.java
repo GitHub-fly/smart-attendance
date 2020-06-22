@@ -42,7 +42,7 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
      * 查询学生所有假条
      */
     @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo(n.pkNoteId, n.type, n.status, n.gmtCreate)" + "FROM SysNote n " +
-            "WHERE n.userId = ?1 AND n.status = 1 ORDER BY n.gmtCreate DESC")
+            "WHERE n.userId = ?1 ORDER BY n.gmtCreate DESC")
     List<StudentNoteVo> findByUserIdEquals(String userId);
 
     /**
