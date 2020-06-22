@@ -28,8 +28,5 @@ public class OpinionDto {
      */
     private Long roleId;
 
-    /**
-     * 审核意见
-     */
-    private String approvalOpinion;
+
 }
