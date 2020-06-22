@@ -24,7 +24,7 @@ import java.util.Map;
  * @Version 1.0
  **/
 @Aspect
-@Component
+//@Component
 @Order(100)
 @Slf4j
 public class WebLogAspect {

@@ -64,16 +64,32 @@ public class NoteController {
         return sysNoteService.findAllStatus(sysNote.getUserId());
     }
 
-    @PostMapping("teacher/advice")
+    /**
+     * 老师们审核同意假条
+     * @param opinionDto
+     * @return
+     */
+    @PostMapping("teacher/agreeAdvice")
     @ControllerWebLog(name = "updateNoteOpinoin", isSaved = true)
     public int updateNoteOpinoin(@RequestBody OpinionDto opinionDto) {
         return sysNoteService.updateTeacherOpinoin(opinionDto);
     }
 
     /**
+     * 老师们驳回假条
+     * @param opinionDto
+     * @return
+     */
+    @PostMapping("teacher/unAgreeAdvice")
+    @ControllerWebLog(name = "updateNoteUnOpinoin", isSaved = true)
+    public int updateNoteUnOpinoin(@RequestBody OpinionDto opinionDto) {
+        return sysNoteService.updateTeacherUnOpinoin(opinionDto);
+    }
+
+    /**
      * 辅导员查看各班级请假情况
      */
-    @PostMapping("insturctor/all")
+    @PostMapping("instructor/all")
     @ControllerWebLog(name = "getAllClazzNote", isSaved = true)
     public List<Map<String, Object>> getAllClazzNote(@RequestBody SysUser sysUser) {
         return sysNoteService.findTeacherVo(sysUser.getPkSysUserId());

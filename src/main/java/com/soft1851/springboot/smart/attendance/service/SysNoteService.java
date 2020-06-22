@@ -50,6 +50,11 @@ public interface SysNoteService {
     int updateTeacherOpinoin(OpinionDto opinionDto);
 
     /**
+     * 老师驳回意见
+     */
+    int updateTeacherUnOpinoin(OpinionDto opinionDto);
+
+    /**
      * 根据辅导员id查班级假条状态
      * @return
      */
