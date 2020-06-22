@@ -61,7 +61,6 @@ public class UserVo implements EntityVo {
      */
     private Integer isAttendance;
 
-
     /**
      * 手机号
      */
@@ -76,6 +75,11 @@ public class UserVo implements EntityVo {
      * 头像
      */
     private String sysUserAvatar;
+
+    /**
+     * 角色 id
+     */
+    private Long roleId;
 
     /**
      * 所属角色名

@@ -103,7 +103,7 @@ public class SysUser {
      * 所属角色id
      */
     @Column(name = "role_id", length = 11, nullable = false)
-    private Integer roleId;
+    private Long roleId;
 
     /**
      * 加盐

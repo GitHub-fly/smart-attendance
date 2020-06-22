@@ -12,6 +12,7 @@ import com.soft1851.springboot.smart.attendance.util.DataTypeChange;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.swing.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
         Long buildingId = userBuildingRepository.findUserBuildingByUserId(managerId).getBuildingId();
         List<StudentBuilding> studentBuildings = studentBuildingRepository.findStudentBuildingsByBuildingId(buildingId);
         // 查到所有学生Id
-        List<String> stuIds = new ArrayList<>();
+        List<String> stuIds = new ArrayList<>(10);
         for (StudentBuilding studentBuilding : studentBuildings) {
            stuIds.add(studentBuilding.getStudentId());
         }
@@ -82,6 +83,8 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
         // 查到宿舍信息
         List<Object> objectList = dormitoryRepository.findDormitoryByIds(dormitoryIds);
         List<EntityVo> entityVos = DataTypeChange.changeObj(objectList, DormitoryVo.class);
+
+        System.out.println(entityVos);
         return entityVos;
     }
 
