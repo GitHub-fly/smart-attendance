@@ -40,12 +40,12 @@ public class SysNoteRepositoryTest {
 
     @Test
     void findByUserIdEquals() {
-        sysNoteRepository.findByUserIdEquals("001").forEach(System.out::println);
+        sysNoteRepository.findByUserIdEquals("2").forEach(System.out::println);
     }
 
     @Test
     void updateTeacherOpinion() {
-        System.out.println(sysNoteRepository.updateTeacherOpinion(1L));
+        System.out.println(sysNoteRepository.updateTeacherOpinion(1L, 1));
     }
 
     @Test

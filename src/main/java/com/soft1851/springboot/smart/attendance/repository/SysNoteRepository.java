@@ -3,10 +3,13 @@ package com.soft1851.springboot.smart.attendance.repository;
 import com.soft1851.springboot.smart.attendance.model.entity.SysNote;
 import com.soft1851.springboot.smart.attendance.model.vo.NoteVo;
 import com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo;
+import jdk.jshell.EvalException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.redis.connection.RedisZSetCommands;
 
+import javax.persistence.Tuple;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -38,8 +41,8 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
     /**
      * 查询学生所有假条
      */
-    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo(n.pkNoteId, n.type, n.status, n.gmtCreate)"+ "FROM SysNote n " +
-            "WHERE n.userId = ?1")
+    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.StudentNoteVo(n.pkNoteId, n.type, n.status, n.gmtCreate)" + "FROM SysNote n " +
+            "WHERE n.userId = ?1 AND n.status = 1 ORDER BY n.gmtCreate DESC")
     List<StudentNoteVo> findByUserIdEquals(String userId);
 
     /**
@@ -47,15 +50,15 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.teacherOpinion = '同意' WHERE n.pkNoteId = ?1 ")
-    int updateTeacherOpinion(Long pkNoteId);
+    @Query("UPDATE SysNote n SET n.teacherOpinion = '同意', n.status = ?2 WHERE n.pkNoteId = ?1 ")
+    int updateTeacherOpinion(Long pkNoteId, Integer status);
 
     /**
      * 添加辅导员意见
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.instructorOpinion = '同意' WHERE n.pkNoteId = ?1 ")
+    @Query("UPDATE SysNote n SET n.instructorOpinion = '同意', n.status = 2 WHERE n.pkNoteId = ?1 ")
     int updateInstructorOpinion(Long pkNoteId);
 
     /**
@@ -71,7 +74,7 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.teacherOpinion = '不同意' WHERE n.pkNoteId = ?1 ")
+    @Query("UPDATE SysNote n SET n.teacherOpinion = '不同意', n.status = 0 WHERE n.pkNoteId = ?1 ")
     int updateUnTeacherOpinion(Long pkNoteId);
 
     /**
@@ -79,7 +82,7 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.instructorOpinion = '不同意' WHERE n.pkNoteId = ?1 ")
+    @Query("UPDATE SysNote n SET n.instructorOpinion = '不同意', n.status = 0 WHERE n.pkNoteId = ?1 ")
     int updateUnInstructorOpinion(Long pkNoteId);
 
     /**
@@ -90,6 +93,16 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
             "ON u.pkSysUserId = n.userId "
             + "LEFT JOIN SysClazz c "
             + "ON c.pkSysClazzId = u.sysClazzId "
-            + "WHERE c.name = ?1 ")
+            + "WHERE c.name = ?1 ORDER BY n.gmtCreate DESC")
     List<Integer> findStatusByClazzName(String clazzName);
+
+
+    /***
+     * 通过请假条id查找出该假条的请假天数
+     *
+     * @param noteId
+     * @return
+     */
+    @Query(value = "SELECT day_count FROM sys_note WHERE pk_note_id = ?1", nativeQuery = true)
+    List<Tuple> getDayCount(Long noteId);
 }

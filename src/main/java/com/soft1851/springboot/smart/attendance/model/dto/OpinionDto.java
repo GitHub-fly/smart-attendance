@@ -1,5 +1,6 @@
 package com.soft1851.springboot.smart.attendance.model.dto;
 
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +29,8 @@ public class OpinionDto {
      */
     private Long roleId;
 
-
+    /**
+     * 假条状态
+     */
+    private Integer status;
 }

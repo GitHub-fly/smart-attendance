@@ -42,7 +42,8 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
             + "ON u.sysClazzId = c.pkSysClazzId "
             + "LEFT JOIN SysNote n "
             + "ON u.pkSysUserId = n.userId "
-            + "WHERE u.sysClazzId = ?1 AND u.roleId = 1 ORDER BY n.pkNoteId DESC ")
+            + "WHERE u.sysClazzId = ?1 AND u.roleId = 1 AND n.teacherOpinion = '' "
+            + "ORDER BY n.pkNoteId DESC ")
     List<TeacherAuditNoteVo> findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(Long clazzId);
 
     /**

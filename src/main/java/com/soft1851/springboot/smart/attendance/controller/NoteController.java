@@ -69,9 +69,10 @@ public class NoteController {
      * @param opinionDto
      * @return
      */
-    @PostMapping("teacher/agreeAdvice")
+    @PostMapping("/teacher/agreeAdvice")
     @ControllerWebLog(name = "updateNoteOpinoin", isSaved = true)
     public int updateNoteOpinoin(@RequestBody OpinionDto opinionDto) {
+
         return sysNoteService.updateTeacherOpinoin(opinionDto);
     }
 
@@ -80,7 +81,7 @@ public class NoteController {
      * @param opinionDto
      * @return
      */
-    @PostMapping("teacher/unAgreeAdvice")
+    @PostMapping("/teacher/unAgreeAdvice")
     @ControllerWebLog(name = "updateNoteUnOpinoin", isSaved = true)
     public int updateNoteUnOpinoin(@RequestBody OpinionDto opinionDto) {
         return sysNoteService.updateTeacherUnOpinoin(opinionDto);
@@ -89,7 +90,7 @@ public class NoteController {
     /**
      * 辅导员查看各班级请假情况
      */
-    @PostMapping("instructor/all")
+    @PostMapping("/instructor/all")
     @ControllerWebLog(name = "getAllClazzNote", isSaved = true)
     public List<Map<String, Object>> getAllClazzNote(@RequestBody SysUser sysUser) {
         return sysNoteService.findTeacherVo(sysUser.getPkSysUserId());
