@@ -45,6 +45,11 @@ public class SysNoteServiceImpl implements SysNoteService {
                 .finishTime(noteDto.getFinishTime())
                 .gmtCreate(Timestamp.valueOf(LocalDateTime.now()))
                 .gmtModified(Timestamp.valueOf(LocalDateTime.now()))
+                .teacherOpinion("")
+                .instructorOpinion("")
+                .academyOpinion("")
+                .deleteFlag(0)
+                .status(1)
                 .reason(noteDto.getReason())
                 .build();
 
@@ -71,16 +76,30 @@ public class SysNoteServiceImpl implements SysNoteService {
     }
 
     /**
-     * 老师审核意见
+     * 老师审核同意意见
      */
     @Override
     public int updateTeacherOpinoin(OpinionDto opinionDto){
         if(opinionDto.getRoleId() == 2) {
-            return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+            return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId());
         }else if (opinionDto.getRoleId() == 3) {
-            return sysNoteRepository.updateInstructorOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+            return sysNoteRepository.updateInstructorOpinion(opinionDto.getPkNoteId());
         }else {
-            return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId(), opinionDto.getApprovalOpinion());
+            return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId());
+        }
+    }
+
+    /**
+     * 老师驳回意见
+     */
+    @Override
+    public int updateTeacherUnOpinoin(OpinionDto opinionDto){
+        if(opinionDto.getRoleId() == 2) {
+            return sysNoteRepository.updateUnTeacherOpinion(opinionDto.getPkNoteId());
+        }else if (opinionDto.getRoleId() == 3) {
+            return sysNoteRepository.updateUnInstructorOpinion(opinionDto.getPkNoteId());
+        }else {
+            return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId());
         }
     }
 

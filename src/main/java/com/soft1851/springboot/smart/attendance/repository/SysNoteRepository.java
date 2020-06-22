@@ -47,24 +47,40 @@ public interface SysNoteRepository extends JpaRepository<SysNote, Long> {
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.teacherOpinion = ?2 WHERE n.pkNoteId = ?1 ")
-    int updateTeacherOpinion(Long pkNoteId, String teacherOpinion);
+    @Query("UPDATE SysNote n SET n.teacherOpinion = '同意' WHERE n.pkNoteId = ?1 ")
+    int updateTeacherOpinion(Long pkNoteId);
 
     /**
      * 添加辅导员意见
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.instructorOpinion = ?2 WHERE n.pkNoteId = ?1 ")
-    int updateInstructorOpinion(Long pkNoteId, String instructorOpinion);
+    @Query("UPDATE SysNote n SET n.instructorOpinion = '同意' WHERE n.pkNoteId = ?1 ")
+    int updateInstructorOpinion(Long pkNoteId);
 
     /**
      * 添加二级学院意见
      */
     @Transactional
     @Modifying
-    @Query("UPDATE SysNote n SET n.academyOpinion = ?2 WHERE n.pkNoteId = ?1 ")
-    int updateAcademyOpinion(Long pkNoteId, String academyOpinion);
+    @Query("UPDATE SysNote n SET n.academyOpinion = '同意' WHERE n.pkNoteId = ?1 ")
+    int updateAcademyOpinion(Long pkNoteId);
+
+    /**
+     * 添加班主任驳回意见
+     */
+    @Transactional
+    @Modifying
+    @Query("UPDATE SysNote n SET n.teacherOpinion = '不同意' WHERE n.pkNoteId = ?1 ")
+    int updateUnTeacherOpinion(Long pkNoteId);
+
+    /**
+     * 添加辅导员驳回意见
+     */
+    @Transactional
+    @Modifying
+    @Query("UPDATE SysNote n SET n.instructorOpinion = '不同意' WHERE n.pkNoteId = ?1 ")
+    int updateUnInstructorOpinion(Long pkNoteId);
 
     /**
      * 根据班级名称查班级假条状态

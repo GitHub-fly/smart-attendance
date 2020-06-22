@@ -23,20 +23,20 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     #show-sql: true
-  #redis配置数据
-  redis:
-    database: 0
-    password:
-    port: 6379
-    host: localhost
-    lettuce:
-      pool:
-        min-idle: 5
-        max-idle: 10
-        max-active: 8
-        max-wait: 1ms
-      shutdown-timeout: 100ms
-
-  encrypt:
-    key: abcdef0123456789
-
+#
+#  #redis配置数据
+#  redis:
+#    database: 0
+#    password:
+#    port: 6379
+#    host: localhost
+#    lettuce:
+#      pool:
+#        min-idle: 5
+#        max-idle: 10
+#        max-active: 8
+#        max-wait: 1ms
+#      shutdown-timeout: 100ms
+#
+#  encrypt:
+#    key: abcdef0123456789
