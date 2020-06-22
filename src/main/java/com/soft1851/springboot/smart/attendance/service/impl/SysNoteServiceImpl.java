@@ -13,6 +13,7 @@ import com.soft1851.springboot.smart.attendance.service.SysNoteService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.Tuple;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -81,7 +82,15 @@ public class SysNoteServiceImpl implements SysNoteService {
     @Override
     public int updateTeacherOpinoin(OpinionDto opinionDto){
         if(opinionDto.getRoleId() == 2) {
-            return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId());
+            // 判断请假天数
+            List<Tuple> dayCount = sysNoteRepository.getDayCount(opinionDto.getPkNoteId());
+            int count = dayCount.get(0).get(0, Integer.class);
+            if (count > 3) {
+                opinionDto.setStatus(1);
+            } else {
+                opinionDto.setStatus(2);
+            }
+            return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId(), opinionDto.getStatus());
         }else if (opinionDto.getRoleId() == 3) {
             return sysNoteRepository.updateInstructorOpinion(opinionDto.getPkNoteId());
         }else {
