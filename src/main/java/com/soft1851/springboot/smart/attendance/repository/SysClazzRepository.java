@@ -40,12 +40,12 @@ import java.util.List;
    /**
     * 根据班级名称查询学生信息和假条信息
     */
-   @Query("SELECT NEW  com.soft1851.springboot.smart.attendance.model.vo.ClazzNoteVo(n.pkNoteId, u.sysUserName, u.sysJobNumber, n.status, n.type, n.gmtCreate) " +
+   @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.ClazzNoteVo(n.pkNoteId, u.sysUserName, u.sysJobNumber, n.status, n.type, n.gmtCreate) " +
            "FROM SysNote n " +
            "LEFT JOIN SysUser u " +
            "ON n.userId = u.pkSysUserId " +
            "LEFT JOIN SysClazz c " +
            "ON c.pkSysClazzId = u.sysClazzId " +
-           "WHERE c.name = ?1 AND n.status = 1")
+           "WHERE n.status = 1 AND c.name = ?1 ORDER BY n.gmtCreate")
    List<ClazzNoteVo> findByNameEquals(String name);
 }
