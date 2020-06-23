@@ -29,6 +29,11 @@ public class TeacherAuditNoteVo {
     private Long pkNoteId;
 
     /**
+     * 用户id
+     */
+    private String pkSysUserId;
+
+    /**
      * 用户真实名字
      */
     private String sysUserName;
@@ -41,7 +46,7 @@ public class TeacherAuditNoteVo {
     /**
      * 班级名称
      */
-    private  String name;
+    private String name;
 
     /**
      * 请假类型

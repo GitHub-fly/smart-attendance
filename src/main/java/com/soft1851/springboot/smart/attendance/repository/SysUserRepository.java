@@ -36,7 +36,7 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
     /**
      * 老师查看班级学生所有假条
      */
-    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo(n.pkNoteId, u.sysUserName, u.sysUserAvatar, c.name, n.type, n.status, n.gmtCreate)"
+    @Query("SELECT NEW com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo(n.pkNoteId, u.pkSysUserId, u.sysUserName, u.sysUserAvatar, c.name, n.type, n.status, n.gmtCreate)"
             + "FROM SysUser u "
             + "LEFT JOIN SysClazz c "
             + "ON u.sysClazzId = c.pkSysClazzId "

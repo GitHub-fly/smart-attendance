@@ -72,7 +72,7 @@ public class SysNoteServiceImpl implements SysNoteService {
      * 查询学生假条所有状态
      */
     @Override
-    public List<StudentNoteVo> findAllStatus(String userId){
+    public List<StudentNoteVo> findAllStatus(String userId) {
         return sysNoteRepository.findByUserIdEquals(userId);
     }
 
@@ -80,8 +80,8 @@ public class SysNoteServiceImpl implements SysNoteService {
      * 老师审核同意意见
      */
     @Override
-    public int updateTeacherOpinoin(OpinionDto opinionDto){
-        if(opinionDto.getRoleId() == 2) {
+    public int updateTeacherOpinoin(OpinionDto opinionDto) {
+        if (opinionDto.getRoleId() == 2) {
             // 判断请假天数
             List<Tuple> dayCount = sysNoteRepository.getDayCount(opinionDto.getPkNoteId());
             int count = dayCount.get(0).get(0, Integer.class);
@@ -91,9 +91,9 @@ public class SysNoteServiceImpl implements SysNoteService {
                 opinionDto.setStatus(2);
             }
             return sysNoteRepository.updateTeacherOpinion(opinionDto.getPkNoteId(), opinionDto.getStatus());
-        }else if (opinionDto.getRoleId() == 3) {
+        } else if (opinionDto.getRoleId() == 3) {
             return sysNoteRepository.updateInstructorOpinion(opinionDto.getPkNoteId());
-        }else {
+        } else {
             return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId());
         }
     }
@@ -102,31 +102,31 @@ public class SysNoteServiceImpl implements SysNoteService {
      * 老师驳回意见
      */
     @Override
-    public int updateTeacherUnOpinoin(OpinionDto opinionDto){
-        if(opinionDto.getRoleId() == 2) {
+    public int updateTeacherUnOpinoin(OpinionDto opinionDto) {
+        if (opinionDto.getRoleId() == 2) {
             return sysNoteRepository.updateUnTeacherOpinion(opinionDto.getPkNoteId());
-        }else if (opinionDto.getRoleId() == 3) {
+        } else if (opinionDto.getRoleId() == 3) {
             return sysNoteRepository.updateUnInstructorOpinion(opinionDto.getPkNoteId());
-        }else {
+        } else {
             return sysNoteRepository.updateAcademyOpinion(opinionDto.getPkNoteId());
         }
     }
 
     /**
      * 根据辅导员id查班级请假情况
+     *
      * @param instructorId
      * @return
      */
     @Override
-    public List<Map<String, Object>> findTeacherVo(String instructorId){
+    public List<Map<String, Object>> findTeacherVo(String instructorId) {
         List<TeacherVo> teacherVos = sysClazzRepository.findTeacherVoByInstructorId(instructorId);
-        System.out.println("正常");
-        List<Map<String, Object>> getTeacherList = new ArrayList<Map<String, Object>>() ;
+        List<Map<String, Object>> getTeacherList = new ArrayList<Map<String, Object>>();
         teacherVos.forEach(teacherVo -> {
             Map<String, Object> map = new HashMap<>();
             System.out.println(teacherVo.getName());
             List<Integer> getStatus = sysNoteRepository.findStatusByClazzName(teacherVo.getName());
-            System.out.println(teacherVo.getName()+"所管理班级请假状态"+getStatus);
+            System.out.println(teacherVo.getName() + "所管理班级请假状态" + getStatus);
             map.put("status", getStatus);
             map.put("teacher", teacherVo);
             getTeacherList.add(map);

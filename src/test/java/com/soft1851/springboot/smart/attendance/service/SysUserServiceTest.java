@@ -24,6 +24,7 @@ class SysUserServiceTest {
         System.out.println(sysUserService.login(loginDto));
     }
 
+    @Test
     void findAllStudentNote() {
         sysUserService.findAllStudentNote("003").forEach(System.out::println);
     }

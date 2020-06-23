@@ -26,6 +26,11 @@ public class ClazzNoteVo {
     private Long pkNoteId;
 
     /**
+     * 用户id
+     */
+    private String pkSysUserId;
+
+    /**
      * 学生姓名
      */
     private String sysUserName;
@@ -38,12 +43,12 @@ public class ClazzNoteVo {
     /**
      * 类型
      */
-    private Integer type;
+    private Integer status;
 
     /**
      * 假条状态
      */
-    private Integer status;
+    private Integer type;
 
     /**
      * 创建时间
