@@ -101,4 +101,8 @@ public class UserVo implements EntityVo {
      */
     private String academyName;
 
+    /**
+     * 班主任电话
+     */
+    private String teacherPhone;
 }

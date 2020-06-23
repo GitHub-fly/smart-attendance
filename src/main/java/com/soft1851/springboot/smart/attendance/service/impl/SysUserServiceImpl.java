@@ -43,6 +43,9 @@ public class SysUserServiceImpl implements SysUserService {
         }
         // 得到用户的基本信息
         UserVo user = (UserVo) DataTypeChange.changeObj(userInfoObj, UserVo.class).get(0);
+        // 查到班主任id
+        String idByPhone = sysUserRepository.queryIdByPhone(user.getTeacherPhone());
+        map.put("teacherId", idByPhone);
         // 开始比对密码是否正确
         String password = Md5Util.getMd5(loginDto.getPassword(), true, 32);
         if (user.getSysUserPassword().equals(password)) {

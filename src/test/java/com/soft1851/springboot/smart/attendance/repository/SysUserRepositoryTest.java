@@ -75,4 +75,9 @@ class SysUserRepositoryTest {
         int i = sysUserRepository.updateIsAttendance();
         System.out.println(i);
     }
+
+    @Test
+    void queryIdByPhone() {
+        System.out.println(sysUserRepository.queryIdByPhone("14455559999"));
+    }
 }
