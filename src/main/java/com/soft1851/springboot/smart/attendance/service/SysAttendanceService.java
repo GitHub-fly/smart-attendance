@@ -59,4 +59,11 @@ public interface SysAttendanceService {
      */
     List<EntityVo> queryClassInfo(String teacherId);
 
+    /**
+     * 查学生是否已打卡
+     * @param stuId
+     * @return
+     */
+    Boolean queryAttendance(String stuId);
+
 }

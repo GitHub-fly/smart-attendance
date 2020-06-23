@@ -60,6 +60,11 @@ public class SysAttendanceController {
         if (!TimeUtil.belongCalendar(DateUtil.date(), start, end)) {
             return ResponseResult.failure(ResultCode.ATTENDANCE_TIME_OUT);
         }
+        // 若已打卡，返回
+        if (attendanceService.queryAttendance(attendanceDto.getUserId())) {
+            return ResponseResult.failure(ResultCode.ATTENDANCE_REPEAT);
+        }
+
         return attendanceService.checkIn(attendanceDto);
     }
 

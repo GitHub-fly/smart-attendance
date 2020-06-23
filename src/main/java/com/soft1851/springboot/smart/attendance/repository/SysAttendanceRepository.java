@@ -1,7 +1,6 @@
 package com.soft1851.springboot.smart.attendance.repository;
 
 import com.soft1851.springboot.smart.attendance.model.entity.SysAttendance;
-import com.soft1851.springboot.smart.attendance.model.vo.EntityVo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -46,4 +45,12 @@ public interface SysAttendanceRepository extends JpaRepository<SysAttendance, Lo
     @Query(value = "SELECT u.pk_sys_user_id, u.sys_user_avatar, u.sys_user_name, u.sys_user_phone, u.is_attendance FROM sys_user u " +
             "WHERE u.sys_clazz_id IN (SELECT sys_user.sys_clazz_id FROM sys_user WHERE pk_sys_user_id=?1 AND role_id=2) AND u.role_id=1", nativeQuery = true)
     List<Object> queryClassCheckIn(String teacherId);
+
+    /**
+     * 查询学生是否已打卡
+     * @param stuId
+     * @return
+     */
+    @Query(value = "SELECT u.isAttendance FROM SysUser u WHERE u.pkSysUserId = ?1")
+    Integer queryIsAttendance(String stuId);
 }

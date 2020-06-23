@@ -72,7 +72,8 @@ public enum ResultCode {
     PERMISSION_NO_ACCESS(70001, "无访问权限"),
 
     /* 考勤模块：80001-89999 */
-    ATTENDANCE_TIME_OUT(80001, "打卡时间错误");
+    ATTENDANCE_TIME_OUT(80001, "打卡时间错误"),
+    ATTENDANCE_REPEAT(80002, "重复打卡");
 
     private Integer code;
 

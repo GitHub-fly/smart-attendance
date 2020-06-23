@@ -125,4 +125,13 @@ public class SysAttendanceServiceImpl implements SysAttendanceService {
         return entityVos;
     }
 
+    @Override
+    public Boolean queryAttendance(String stuId) {
+        Integer isAttendance = attendanceRepository.queryIsAttendance(stuId);
+        if (isAttendance == 1) {
+            return true;
+        }
+        return false;
+    }
+
 }

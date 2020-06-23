@@ -42,4 +42,8 @@ class SysAttendanceRepositoryTest {
         entityVos.forEach(System.out::println);
     }
 
+    @Test
+    void queryIsAttendance() {
+        System.out.println(attendanceRepository.queryIsAttendance("141"));
+    }
 }
