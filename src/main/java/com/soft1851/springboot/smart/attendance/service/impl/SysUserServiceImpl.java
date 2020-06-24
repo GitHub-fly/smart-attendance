@@ -9,6 +9,7 @@ import com.soft1851.springboot.smart.attendance.model.vo.MenuVo;
 import com.soft1851.springboot.smart.attendance.model.vo.TeacherAuditNoteVo;
 
 import com.soft1851.springboot.smart.attendance.model.vo.UserVo;
+import com.soft1851.springboot.smart.attendance.repository.SysInstructorTeacherRepository;
 import com.soft1851.springboot.smart.attendance.repository.SysUserRepository;
 import com.soft1851.springboot.smart.attendance.service.SysUserService;
 import com.soft1851.springboot.smart.attendance.util.DataTypeChange;
@@ -32,6 +33,8 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Resource
     private SysUserRepository sysUserRepository;
+    @Resource
+    private SysInstructorTeacherRepository sysInstructorTeacherRepository;
 
     @Override
     public Map<String, Object> login(LoginDto loginDto) {
@@ -60,11 +63,15 @@ public class SysUserServiceImpl implements SysUserService {
      * 老师查询本班学生所有假条
      */
     @Override
-    public List<TeacherAuditNoteVo> findAllStudentNote(String userId){
+    public Map<String, Object> findAllStudentNote(String userId) {
+        HashMap<String, Object> map = new HashMap<>(5);
         //第一步 根据老师id查询班级id
         Long clazzId = sysUserRepository.findSysClazzIdByPkSysUserIdEquals(userId);
         //第二步 根据班级id和角色id查询本班级所有学生假条
-        return sysUserRepository.findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(clazzId);
+        map.put("noteList", sysUserRepository.findTeacherAuditNoteVoBySysClazzIdAndRoleIdEquals(clazzId));
+        // 第三步，获取该班主任的辅导员id
+        map.put("instructorId", sysInstructorTeacherRepository.findInstructorByTeacherIdEquals(userId));
+        return map;
     }
 
 }

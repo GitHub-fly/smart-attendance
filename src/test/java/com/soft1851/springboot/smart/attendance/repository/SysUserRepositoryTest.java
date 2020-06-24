@@ -75,4 +75,9 @@ class SysUserRepositoryTest {
         int i = sysUserRepository.updateIsAttendance();
         System.out.println(i);
     }
+
+    @Test
+    void findUserIdByPkSysUserIdEquals() {
+        System.out.println(sysUserRepository.findInstructorIdByPkSysUserIdEquals("001"));
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ke
@@ -28,8 +29,8 @@ public class TeacherAuditNoteController {
 
     @PostMapping("teacher/all")
     @ControllerWebLog(name = "getStudentAllNote", isSaved = true)
-    public List<TeacherAuditNoteVo> getStudentAllNote(@RequestBody SysUser sysUser) {
+    public Map<String, Object> getStudentAllNote(@RequestBody SysUser sysUser) {
         return sysUserService.findAllStudentNote(sysUser.getPkSysUserId());
-
     }
+
 }

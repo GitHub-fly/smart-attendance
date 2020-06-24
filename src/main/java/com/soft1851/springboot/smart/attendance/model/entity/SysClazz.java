@@ -59,6 +59,12 @@ public class SysClazz {
     private String academyName;
 
     /**
+     * 班主任和辅导员关系表
+     */
+    @Column(name = "instructor_teacher_id", length = 10, nullable =  false)
+    private Long instructorTeacherId;
+
+    /**
      * 创建时间
      */
     @Column(name = "gmt_create")

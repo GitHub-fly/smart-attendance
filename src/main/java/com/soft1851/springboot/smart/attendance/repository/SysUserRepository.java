@@ -76,4 +76,17 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
     @Transactional(rollbackFor = RuntimeException.class)
     @Query(value = "UPDATE SysUser c SET c.isAttendance = 0 WHERE c.roleId = 1 ")
     int updateIsAttendance();
+
+    /**
+     * 根据学生id查辅导员id
+     */
+    @Query("SELECT i.instructorId FROM SysInstructorTeacher i " +
+            "LEFT JOIN SysClazz c " +
+            "ON c.instructorTeacherId = i.pkInstructorTeacher " +
+            "LEFT JOIN SysUser u " +
+            "ON u.sysClazzId = c.pkSysClazzId " +
+            "WHERE u.pkSysUserId = ?1 ")
+    String findInstructorIdByPkSysUserIdEquals(String studentId);
+
+
 }

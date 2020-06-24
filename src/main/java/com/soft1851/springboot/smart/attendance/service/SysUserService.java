@@ -26,6 +26,6 @@ public interface SysUserService {
     /**
      * 老师查询本班学生所有假条
      */
-    List<TeacherAuditNoteVo> findAllStudentNote(String userId);
+    Map<String, Object> findAllStudentNote(String userId);
 
 }

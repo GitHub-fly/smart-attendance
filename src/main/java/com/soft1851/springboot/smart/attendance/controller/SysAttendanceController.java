@@ -103,6 +103,7 @@ public class SysAttendanceController {
     @ApiOperation(value = "查询学生打卡详情", notes = "")
     @ControllerWebLog(name = "queryStuInfo", isSaved = true)
     public EntityVo queryStuInfo(@RequestBody SysUser sysUser) {
+        System.out.println(sysUser);
         return attendanceService.queryStuInfo(sysUser.getPkSysUserId()).get(0);
     }
 

@@ -48,4 +48,6 @@ import java.util.List;
            "ON c.pkSysClazzId = u.sysClazzId " +
            "WHERE n.status = 1 AND n.dayCount > 3 AND n.teacherOpinion = '同意' AND c.name = ?1 ORDER BY n.gmtCreate")
    List<ClazzNoteVo> findByNameEquals(String name);
+
+
 }
