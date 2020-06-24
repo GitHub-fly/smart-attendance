@@ -77,7 +77,9 @@ class SysUserRepositoryTest {
     }
 
     @Test
-    void findUserIdByPkSysUserIdEquals() {
-        System.out.println(sysUserRepository.findInstructorIdByPkSysUserIdEquals("001"));
+//    void findUserIdByPkSysUserIdEquals() {
+//        System.out.println(sysUserRepository.findInstructorIdByPkSysUserIdEquals("001"));
+    void queryIdByPhone() {
+        System.out.println(sysUserRepository.queryIdByPhone("14455559999"));
     }
 }

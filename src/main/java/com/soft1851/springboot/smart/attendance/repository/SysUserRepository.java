@@ -24,7 +24,7 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
     @Query(value = "SELECT u.pk_sys_user_id, u.sys_user_name, u.sys_user_nickname, u.sys_user_gender, " +
             "u.sys_job_number, u.sys_user_instructor_name, u.sys_user_academy_teacher_name, u.is_attendance, " +
             "u.sys_user_phone, u.sys_user_password, u.sys_user_avatar, r.pk_role_id, r.role_name, c.name AS clazz_name, " +
-            "c.teacher_name, c.academy_name\n" +
+            "c.teacher_name, c.academy_name, c.teacher_phone\n" +
             "FROM sys_user u\n" +
             "LEFT JOIN sys_clazz c\n" +
             "ON u.sys_clazz_id = c.pk_sys_clazz_id\n" +
@@ -88,5 +88,11 @@ public interface SysUserRepository extends JpaRepository<SysUser, String> {
             "WHERE u.pkSysUserId = ?1 ")
     String findInstructorIdByPkSysUserIdEquals(String studentId);
 
-
+     /**
+     * 通过手机号查用户（班主任）id
+     * @param phone
+     * @return
+     */
+    @Query(value = "SELECT u.pkSysUserId FROM SysUser u WHERE u.sysUserPhone = ?1 ")
+    String queryIdByPhone(String phone);
 }
